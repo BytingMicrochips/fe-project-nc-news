@@ -1,0 +1,45 @@
+@font-face {
+    font-family: "Exo2";
+    src: url(../src/assets/Exo_2/Exo2-VariableFont_wght.ttf);
+}
+
+*{
+    font-family: Exo2;
+}
+.app{
+    max-width: 95%;
+    margin: auto;
+    background-color: rgb(81, 49, 111);
+}
+
+main{
+    max-width: 93%;
+    margin: auto;
+}
+
+.backgroundPseudo{
+    max-width: 80%;
+    margin: auto;
+    background-image: url("./assets/french-newspaper.jpg");
+    opacity: 1;
+}
+header, footer{
+    max-width: 90%;
+    height: 15vh;
+    margin: auto;
+    background-color: blueviolet;
+}
+
+.articleCard{
+    max-width: 60%;
+    margin: auto;
+    display: flex;
+    margin-bottom: 2vh;
+    margin-top: 2vh;
+    justify-content: space-between;
+    background-color: rgb(50, 20, 78);
+}
+
+.articleTitle{
+    margin-left: 3vw;
+}
