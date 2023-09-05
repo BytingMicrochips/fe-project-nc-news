@@ -4,14 +4,31 @@
 }
 
 *{
-    font-family: Exo2;
+    font-family: Exo2, Arial, Helvetica, sans-serif;
+}
+html{
+    background-color: rgb(128, 102, 160);
+    
+}
+
+body{
+    margin-top: -4em;
 }
 .app{
     max-width: 95%;
     margin: auto;
-    background-color: rgb(81, 49, 111);
+    background-color: rgb(103, 95, 111);
+    border-radius: 1em;
 }
 
+.app header{
+    color: antiquewhite;
+    font-size: 60px;
+}
+
+#headingText{
+    margin-left: 0.2em;
+}
 main{
     max-width: 93%;
     margin: auto;
@@ -20,14 +37,18 @@ main{
 .backgroundPseudo{
     max-width: 80%;
     margin: auto;
-    background-image: url("./assets/french-newspaper.jpg");
+    background-image: url("./assets/Pile-of-newspapers.jpg.webp");
+
+    background-size: contain;
+    height: 100%;
     opacity: 1;
 }
 header, footer{
     max-width: 90%;
     height: 15vh;
     margin: auto;
-    background-color: blueviolet;
+    background-color: rgb(109, 62, 152);
+    border-radius: 2vh;
 }
 
 .articleCard{
@@ -37,9 +58,93 @@ header, footer{
     margin-bottom: 2vh;
     margin-top: 2vh;
     justify-content: space-between;
-    background-color: rgb(50, 20, 78);
+    background-color: rgb(85, 65, 103);
+    border-radius: 1em;
 }
 
 .articleTitle{
     margin-left: 3vw;
+    color:antiquewhite
+}
+
+.readNowButton, .backToAll{
+    background-color: rgb(109, 62, 152);
+    color: antiquewhite;
+    min-width: 15%;
+    border-radius: 1em;
+}
+
+.backToAll{
+    margin-bottom: 2em;
+}
+
+
+.wholeArticle{
+    display: block;
+    text-align: center;
+    margin: auto;
+    background-color: rgb(159, 123, 204);
+    width: 60%;
+}
+
+.wholeArticle img{
+    width: 95%;
+    border-radius: 1em;
+}
+
+.wholeArticle p{
+    max-width: 70%;
+    text-align: start;
+    line-height: 2.6em;
+    margin: auto;
+    margin-top: 1.5em;
+    margin-bottom: 1.5em;
+    color:antiquewhite;
+    background-color: rgb(103, 95, 111);
+    padding: 1em;
+    font-weight: 300;
+    opacity: 0.9;
+    border-radius: 1em;
+}
+
+.allHeadings{
+    color: antiquewhite;
+    background-color: rgb(103, 95, 111);
+    padding: 1em;
+    margin-bottom: 1em;
+    opacity: 0.7;
+    
+}
+
+.wholeArticle button {
+    width: 20%;
+    padding: 1em;
+}
+
+.articleSubheading{
+    display: inline-flex;
+    opacity: 0.6;
+}
+
+.subheadingAuthor, .subheadingDate{
+    margin-right: 15%;
+    margin-top: 0px;
+}
+
+.loadingChild{
+    margin: auto;
+    padding: 20%;
+    display: flex;
+    flex-direction: column; 
+}
+
+#errorGears{
+    background-color: rgb(109, 62, 152);
+    opacity: 0.6;
+    width: 60%;
+    
+}
+
+#errorMsg{
+    text-align: center;
 }
