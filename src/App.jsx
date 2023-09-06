@@ -3,12 +3,10 @@ import { Route, Routes, useParams } from "react-router-dom";
 import { useState } from 'react';
 import { Articles } from './components/Articles';
 import { WholeArticle } from './components/WholeArticle';
-
+import { Comments } from './components/Comments';
 
 function App() {
   const [article_id, setArticle_id] = useState(1);
-
-  
 
   return (
     <>
@@ -20,13 +18,20 @@ function App() {
           <div className="backgroundPseudo">
             <Routes>
               <Route path="/articles" element={<Articles />} />
+
               <Route
                 path="/articles/:article_id"
                 element={
-                  <WholeArticle
-                    article_id={article_id}
-                    setArticle_id={setArticle_id}
-                  />
+                  <>
+                    <div className="contentWrapper">
+                      <div className="wholeArticleWrapper">
+                        <WholeArticle article_id={article_id} />{" "}
+                      </div>
+                      <div className="commentWrapper">
+                        <Comments article_id={article_id} />
+                      </div>
+                    </div>
+                  </>
                 }
               />
             </Routes>

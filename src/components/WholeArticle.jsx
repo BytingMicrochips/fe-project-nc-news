@@ -4,16 +4,17 @@ import { useParams, useNavigate } from "react-router-dom";
 import gears from "../assets/gears/gears.svg";
 import loadingCircle from "../assets/icons8-loading-circle-office-m/icons8-loading-circle-80.png";
 
+
 export const WholeArticle = ({ article_id }) => {
   const [singleArticle, setSingleArticle] = useState({});
   const [displayErr, setDisplayErr] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const params = useParams();
   const navigate = useNavigate();
+  
   useEffect(() => {
     setDisplayErr(false)
     setIsLoading(true);
-
     axios
       .get(
         `https://nc-news-service-h8vo.onrender.com/api/articles/${params.article_id}`
@@ -58,13 +59,13 @@ export const WholeArticle = ({ article_id }) => {
                      all articles
                    </em>
                  </p>
-                   <button
-                     className="backToAll"
-                     onClick={()=> navigate('/articles')}
-                     key="backToAll">
-                     Back to all articles
-                   </button>
-            
+                 <button
+                   className="backToAll"
+                   onClick={() => navigate("/articles")}
+                   key="backToAll"
+                 >
+                   Back to all articles
+                 </button>
                </div>
              </>
            ); 
