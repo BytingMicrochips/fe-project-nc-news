@@ -3,23 +3,58 @@ import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import gears from "../assets/gears/gears.svg";
 import loadingCircle from "../assets/icons8-loading-circle-office-m/icons8-loading-circle-80.png";
-
+import thumbsUp from "../assets/thumbs-icons/thumb-up.png";
+import thumbsDown from "../assets/thumbs-icons/thumb-down.png";
 
 export const WholeArticle = ({ article_id }) => {
   const [singleArticle, setSingleArticle] = useState({});
   const [displayErr, setDisplayErr] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
+  const [trueVotes, setTrueVotes] = useState(0);
   const params = useParams();
   const navigate = useNavigate();
-  
+
+  const handleUpvote = () => {
+    setTrueVotes(trueVotes + 1);
+    axios
+      .patch(
+        `https://nc-news-service-h8vo.onrender.com/api/articles/${params.article_id}`,
+        { inc_votes: 1 }
+      )
+      .then(({ data }) => {
+        setTrueVotes(data.votes);
+      })
+      .catch((err) => {
+        alert("failed to register upvote!");
+      });
+  };
+
+  const handleDownvote = () => {
+    setTrueVotes(trueVotes - 1);
+    axios
+      .patch(
+        `https://nc-news-service-h8vo.onrender.com/api/articles/${params.article_id}`,
+        { inc_votes: -1 }
+      )
+      .then(({ data }) => {
+        setTrueVotes(data.votes);
+      })
+      .catch((err) => {
+        alert("failed to register downvote!");
+      });
+  };
+
   useEffect(() => {
     setDisplayErr(false)
     setIsLoading(true);
     axios
-      .get(
-        `https://nc-news-service-h8vo.onrender.com/api/articles/${params.article_id}`
+    .get(
+      `https://nc-news-service-h8vo.onrender.com/api/articles/${params.article_id}`
       )
       .then(({ data }) => {
+        setTrueVotes(data.article.votes);
+       
+        setDisplayErr(false)
         setIsLoading(false);
         setSingleArticle(data);
       })
@@ -28,9 +63,8 @@ export const WholeArticle = ({ article_id }) => {
           setIsLoading(false);
           setDisplayErr(true)
         }
-      );
-  }, [article_id]);
-
+        );
+      }, [article_id]);
 
   if (isLoading === true) {
     return (
@@ -69,8 +103,10 @@ export const WholeArticle = ({ article_id }) => {
                </div>
              </>
            ); 
-}
-    if (singleArticle.article) {
+  }
+  
+ 
+  if (singleArticle.article) {
       return (
         <>
           <div className="wholeArticle">
@@ -87,10 +123,16 @@ export const WholeArticle = ({ article_id }) => {
             </div>
             <img src={singleArticle.article.article_img_url} />
             <p>{singleArticle.article.body}</p>
+            <div id="articleVoting">
+              <img src={thumbsDown} onClick={handleDownvote} />
+              <p id="articleVotes">{trueVotes}</p>
+              <img src={thumbsUp} onClick={handleUpvote} />
+            </div>
             <button
               className="backToAll"
               onClick={() => navigate("/articles")}
-              key="backToAll">
+              key="backToAll"
+            >
               Back to all articles
             </button>
           </div>

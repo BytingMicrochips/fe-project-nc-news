@@ -1,3 +1,4 @@
+
 @font-face {
     font-family: "Exo2";
     src: url(../src/assets/Exo_2/Exo2-VariableFont_wght.ttf);
@@ -24,6 +25,7 @@ body{
 .app header{
     color: antiquewhite;
     font-size: 60px;
+    opacity: 0.8;
 }
 
 #headingText{
@@ -51,7 +53,7 @@ header, footer{
 }
 
 .articleCard{
-    max-width: 60%;
+    max-width: 70%;
     margin: auto;
     display: flex;
     margin-bottom: 2vh;
@@ -59,6 +61,7 @@ header, footer{
     justify-content: space-between;
     background-color: rgb(85, 65, 103);
     border-radius: 1em;
+    
 }
 
 .articleTitle{
@@ -71,6 +74,7 @@ header, footer{
     color: antiquewhite;
     min-width: 15%;
     border-radius: 1em;
+    border-style: inset;
 }
 
 .backToAll{
@@ -89,6 +93,7 @@ header, footer{
     border-color: rgb(138, 125, 150);
     border-width: 0.4em;
     border-style:outset;
+    opacity: 0.95;
 }
 
 .wholeArticle img{
@@ -168,13 +173,17 @@ header, footer{
 }
 
 .commentWrapper{
-    width: 100%;
+    width: fit-content;
     margin-right: 1em;
     margin-top: 1em;
+    opacity: 0.96;
+    z-index: 1;
 }
 
 .contentWrapper{
-    display: inline-flex;
+    display: flex;
+    width: fit-content;
+    justify-content: center ;
 }
 .commentCard p, .commentCard article{
     margin-top: 0.5vh;
@@ -195,7 +204,7 @@ header, footer{
 
 #voting img, #voting p{
     margin-right: 1em;
-    width: 2em
+    width: 3em
 }
 
 #authorDate{
@@ -227,3 +236,117 @@ header, footer{
     font-size: large;
 }
 
+#articleVoting{
+display: flex;
+width: fit-content;
+margin:auto;
+padding: 1em;
+height: 3em;
+background-color: rgb(103, 95, 111);
+margin-bottom: 1em;
+border-radius: 1em;
+border-color: rgb(138, 125, 150);
+border-width: 0.4em;
+border-style: outset;
+
+}
+
+#articleVotes{
+text-align: center;
+font-size: 2em;
+height: 1em;
+background-color: transparent;
+border-style: none;
+position: relative;
+bottom: 2.5em;
+padding: 0.5em;
+margin-right: 0.5em;
+
+}
+
+#articleVoting img{
+margin-right: 1em;
+width: 3em;
+height: 3em;
+}
+
+#allArtVoting{
+    background-color: rgb(132, 113, 142);
+    display: flex;
+    border-radius: 1em;   
+    border-style: inset;
+    font-weight: 550;
+}
+
+#allArtVoting img, #allArtVoting button{
+    width: 2em;
+    height: 2em;
+    margin-top: 0.7em;
+}
+
+#rightCardElements{
+    display: flex;
+    border-radius: 1em;
+    border-color: rgb(138, 125, 150);
+    border-width: 0.2em;
+    border-style: outset;
+}
+
+.newCommentWrapper{
+    background-color: rgb(103, 95, 111);
+    display: flex;
+    justify-content: center;
+    width: 44vw;
+    height: 20vh;
+    margin-top: 1em;
+    margin-left: 2.5em;
+    margin-right: 2.5em;
+    background-color: (109, 62, 152);
+    border-width: 0.4em;
+    border-style: ridge;
+    border-radius: 1em;
+    opacity: 0.85;
+    
+}
+
+.newCommentWrapper textarea{
+    width: 85%;
+    height: 50%;
+    margin-top: 1.8em;
+    margin-bottom: 0.6em;
+    margin-right: 1.2em;
+    margin-left: 1.2em;
+    text-align: start;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 2em;
+    resize: none;
+    background-color: rgb(128, 102, 160);
+    border-radius: 1em;
+}
+
+.newCommentWrapper button{
+    height: 50%;
+    margin-top: 3em;
+    margin-right: 2.5em;
+    border-radius: 1em;
+    background-color: rgb(128, 102, 160);
+}
+
+
+#sendIcon{
+    display: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.posted img{
+    width: 8em;
+    margin-top: 0.5em;
+    background-color: aqua;
+    padding-right: 0.5em;
+    border-radius: 1em;
+    border-style: inset;
+    border-color: none;
+    background-color: rgb(133, 97, 176);
+}
