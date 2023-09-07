@@ -47,6 +47,7 @@ main{
     height: 100%;
     opacity: 1;
     padding-top: 0.5em;
+    padding-bottom: 0.5em;
     border-radius: 1em;
 }
 header, footer{
@@ -476,7 +477,7 @@ height: 3em;
     margin: auto;
     margin-bottom: 1em;
     margin-top: 0.5em;
-    opacity: 0.7;
+    opacity: 0.9;
     border-radius: 1em;
 }
 
@@ -484,5 +485,53 @@ height: 3em;
     background-color: rgb(128, 102, 160);
     border-radius: 1em;
     color:antiquewhite;
-    font-size: 1em;
+    font-size: 1.3em;
+    padding: 0.2em;
+    border-color: rgb(138, 125, 150);
+    border-width: 0.2em;
+    border-style: inset;
+}
+
+
+.commentCardFailed {
+    color: antiquewhite;
+    background-color: rgba(157, 0, 0, 0.923);
+    width: 20vw;
+    border-radius: 1vw;
+    margin-bottom: 2vh;
+    border-color: rgb(138, 125, 150);
+    border-width: 0.4em;
+    border-style: ridge;
+}
+
+.cardChildFailed {
+    font-weight: 250;
+    line-height: 2em;
+    color: antiquewhite;
+    background-color: rgb(128, 5, 5);
+}
+
+.commentCardFailed p,
+.commentCardFailed article {
+    margin-top: 0.5vh;
+    margin-left: 0.5vw;
+    margin-right: 0.5vw;
+    padding: 0.3em;
+    border-radius: 1em;
+
+}
+
+.postedFailed img{
+    width: 7.7em;
+    margin-top: 0.8em;
+    margin-bottom: 0.8em;
+    padding-right: 0.5em;
+    border-radius: 1em;
+    border-style: inset;
+    border-color: none;
+    background-color: rgb(157, 0, 0, 0.923);
+}
+
+#failedRetry{
+    background-color: rgb(133, 97, 176);
 }

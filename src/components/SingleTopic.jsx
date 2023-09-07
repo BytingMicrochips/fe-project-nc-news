@@ -95,8 +95,8 @@ if (isLoading === true) {
   }
   return (
     <>
-        <div className="allArticlesSub">
-        <h1>All available articles</h1>
+      <div className="allArticlesSub">
+        <h1>Articles about {params.topic}</h1>
         <h3>Select a sort by option</h3>
         <div className="queriesSelect">
           <select className="sortSelect" defaultValue={filterBy}>
@@ -120,44 +120,41 @@ if (isLoading === true) {
           </select>
         </div>
       </div>
-    {matchedArticles.map((titleCard) => {
-      return (
-        <>
-          <div className="articleCard" key={titleCard.article_id}>
-            <p className="articleTitle" key={titleCard.title}>
-              {titleCard.title}
-            </p>
-            <div id="rightCardElements">
-              <button
-                id="readNowButton"
-                onClick={() =>
-                  navigate(`/articles/${titleCard.article_id}`)
-                }
-                key={titleCard.created_at}
-              >
-                Read article
-              </button>
-              <div id="allArtVoting">
-                <img
-                  src={thumbsDown}
-                  onClick={() => {
-                    handleDownvote(titleCard.article_id),
-                      titleCard.votes - 1;
-                  }}
-                />
-                <p>{titleCard.votes}</p>
-                <img
-                  src={thumbsUp}
-                  onClick={() => {
-                    handleUpvote(titleCard.article_id);
-                  }}
-                />
+      {matchedArticles.map((titleCard) => {
+        return (
+          <>
+            <div className="articleCard" key={titleCard.article_id}>
+              <p className="articleTitle" key={titleCard.title}>
+                {titleCard.title}
+              </p>
+              <div id="rightCardElements">
+                <button
+                  id="readNowButton"
+                  onClick={() => navigate(`/articles/${titleCard.article_id}`)}
+                  key={titleCard.created_at}
+                >
+                  Read article
+                </button>
+                <div id="allArtVoting">
+                  <img
+                    src={thumbsDown}
+                    onClick={() => {
+                      handleDownvote(titleCard.article_id), titleCard.votes - 1;
+                    }}
+                  />
+                  <p>{titleCard.votes}</p>
+                  <img
+                    src={thumbsUp}
+                    onClick={() => {
+                      handleUpvote(titleCard.article_id);
+                    }}
+                  />
+                </div>
               </div>
             </div>
-          </div>
           </>
-      );
-    })}
+        );
+      })}
     </>
-  )
+  );
 };

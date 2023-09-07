@@ -11,7 +11,6 @@ export const Comments = ({ article_id }) => {
   const [comments, setComments] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [commentsChanged, setCommentsChanged] = useContext(CommentsContext);
-  console.log("🚀 ~ file: Comments.jsx:12 ~ Comments ~ commentsChanged:", commentsChanged)
 
   const params = useParams();
 
@@ -27,32 +26,30 @@ export const Comments = ({ article_id }) => {
 
 
   useEffect(() => {
-    console.log('fetching comments from db')
-      setIsLoading(true);
+      // setIsLoading(true);
     axios
       .get(
         `https://nc-news-service-h8vo.onrender.com/api/articles/${params.article_id}/comments`
       )
       .then(({ data }) => {
-          setIsLoading(false);
+          // setIsLoading(false);
         setComments(data.comments);
-        console.log("🚀 ~ file: Comments.jsx:38 ~ .then ~ data.comments:", data.comments)
         setCommentsChanged(false);
       })
       .catch((err) => {
-          setIsLoading(false);
+          // setIsLoading(false);
       });
   }, [params.article_id, commentsChanged]);
 
-  if (isLoading === true) {
-    return (
-      <>
-        <div className="loading">
-          <img className="loadingChild" src={loadingCircle} />
-        </div>
-      </>
-    );
-  }
+  // if (isLoading === true) {
+  //   return (
+  //     <>
+  //       <div className="loading">
+  //         <img className="loadingChild" src={loadingCircle} />
+  //       </div>
+  //     </>
+  //   );
+  // }
   
   if (comments[0] !== "No comments found...") {
     return comments.map((comment) => {
