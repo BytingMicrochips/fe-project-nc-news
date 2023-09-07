@@ -45,27 +45,25 @@ export const WholeArticle = ({ article_id }) => {
   };
 
   useEffect(() => {
-    setDisplayErr(false)
+    setDisplayErr(false);
     setIsLoading(true);
     axios
-    .get(
-      `https://nc-news-service-h8vo.onrender.com/api/articles/${params.article_id}`
+      .get(
+        `https://nc-news-service-h8vo.onrender.com/api/articles/${params.article_id}`
       )
       .then(({ data }) => {
         setTrueVotes(data.article.votes);
-       
-        setDisplayErr(false)
+
+        setDisplayErr(false);
         setIsLoading(false);
         setSingleArticle(data);
       })
-      .catch(
-        (err) => {
-          setIsLoading(false);
-          setDisplayErr(true)
-        }
-        );
-      }, [article_id]);
-
+      .catch((err) => {
+        setIsLoading(false);
+        setDisplayErr(true);
+      });
+  }, [params.article_id]);
+      
   if (isLoading === true) {
     return (
       <>
@@ -79,33 +77,32 @@ export const WholeArticle = ({ article_id }) => {
   if (displayErr === true) {
            return (
              <>
-               <div className="wholeArticle">
-                 <div className="allHeadings">
-                   <h2>
-                     Sorry! <br />
-                     We couldn't find that article
-                   </h2>
+                 <div className="wholeArticle">
+                   <div className="allHeadings">
+                     <h2>
+                       Sorry! <br />
+                       We couldn't find that article
+                     </h2>
+                   </div>
+                   <img id="errorGears" src={gears} />
+                   <p id="errorMsg">
+                     <em>
+                       Please ammend your request or use the button below to
+                       list all articles
+                     </em>
+                   </p>
+                   <button
+                     className="backToAll"
+                     onClick={() => navigate("/articles")}
+                     key="backToAll"
+                   >
+                     Back to all articles
+                   </button>
                  </div>
-                 <img id="errorGears" src={gears} />
-                 <p id="errorMsg">
-                   <em>
-                     Please ammend your request or use the button below to list
-                     all articles
-                   </em>
-                 </p>
-                 <button
-                   className="backToAll"
-                   onClick={() => navigate("/articles")}
-                   key="backToAll"
-                 >
-                   Back to all articles
-                 </button>
-               </div>
              </>
            ); 
   }
   
- 
   if (singleArticle.article) {
       return (
         <>

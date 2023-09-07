@@ -23,12 +23,15 @@ body{
 }
 
 .app header{
+    display: absolute;
+    height: 2em;
     color: antiquewhite;
     font-size: 60px;
     opacity: 0.8;
 }
 
 #headingText{
+    display: absolute;
     margin-left: 0.2em;
 }
 main{
@@ -69,7 +72,7 @@ header, footer{
     color:antiquewhite
 }
 
-.readNowButton, .backToAll{
+#readNowButton, .backToAll{
     background-color: rgb(109, 62, 152);
     color: antiquewhite;
     min-width: 15%;
@@ -349,4 +352,87 @@ height: 3em;
     border-style: inset;
     border-color: none;
     background-color: rgb(133, 97, 176);
+}
+
+.topicHeadings{
+    color: antiquewhite;
+    background-color: rgb(103, 95, 111);
+    padding: 1em;
+    margin-bottom: 1em;
+    opacity: 0.7;
+    border-radius: 1em;
+}
+.allTopics p{
+    width: 40%;
+    text-align: center;
+    line-height: 2.6em;
+    margin: auto;
+    margin-top: 1.5em;
+    margin-bottom: 1.5em;
+    color:antiquewhite;
+    background-color: rgb(103, 95, 111);
+    padding: 1em;
+    font-size: 1.5em;
+    font-weight: 300;
+    opacity: 0.9;
+    border-radius: 1em;
+    border-color: rgb(138, 125, 150);
+    border-width: 0.4em;
+    border-style: ridge;
+}
+
+.topicHeadings h2{
+    text-align: center;
+}
+
+.topicHeadingsSub {
+    text-align: center;
+    margin: auto;
+}
+
+#errWrapper{
+    margin:auto;
+}
+
+.wholeTopics{
+    display: block;
+    text-align: center;
+    margin: auto;
+    background-color: rgb(159, 123, 204);
+    width: 60%;
+    margin-top: 1em;
+    border-radius: 1em;
+    border-color: rgb(138, 125, 150);
+    border-width: 0.4em;
+    border-style:outset;
+    opacity: 0.95;
+}
+
+.wholeTopics button{
+    padding: 1.5em;
+    font-size: 1em;
+}
+
+.headerWrapper{
+    display: absolute;
+    height: 8em;
+}
+
+.headerWrapper nav{
+    display: flex;
+    justify-content: end;
+    margin-right: 6em;
+}
+
+.headerWrapper button{
+    margin-left: 2em;
+    margin-right: 1em;
+    background-color: rgb(128, 102, 160);
+    color: antiquewhite;
+    width: 6em;
+    border-radius: 1em;
+    border-style: inset;
+    padding: 1em;
+    z-index: 3;
+    margin-top: -5em;
 }

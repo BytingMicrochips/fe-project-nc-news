@@ -42,15 +42,11 @@ export const Articles = () => {
   };
 
   useEffect(() => {
-    {
       setIsLoading(true);
-    }
     axios
       .get(`https://nc-news-service-h8vo.onrender.com/api/articles`)
       .then(({ data }) => {
-        {
-          setIsLoading(false);
-        }
+        setIsLoading(false);
         setArticles(data.articles);
       });
   }, [trueVotes]);
@@ -76,7 +72,7 @@ export const Articles = () => {
             </p>
             <div id="rightCardElements">
               <button
-                className="readNowButton"
+                id="readNowButton"
                 onClick={() => navigate(`/articles/${titleCard.article_id}`)}
                 key={titleCard.created_at}
               >
