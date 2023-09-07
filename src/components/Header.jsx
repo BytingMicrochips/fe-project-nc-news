@@ -2,7 +2,6 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { firstLetterUppercase } from "../utils/firstLetterUppercase";
 import { useEffect, useState } from "react";
-import { spaceRemover } from "../utils/spaceRemover";
 
 export const Header = () => {
     const [topics, setTopics] = useState([]);
@@ -37,7 +36,7 @@ export const Header = () => {
     },[])
     
 const randomArticleId = () => {
-    const newArticleId = Math.floor(Math.random() * numArticles + 1)
+    const newArticleId = Math.floor(Math.random() * numArticles +1)
     setArticleId(newArticleId)
     return newArticleId
 }
