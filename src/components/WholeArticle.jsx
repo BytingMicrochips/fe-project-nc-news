@@ -50,10 +50,8 @@ export const WholeArticle = ({ article_id }) => {
         `https://nc-news-service-h8vo.onrender.com/api/articles/${params.article_id}`
       )
       .then(({ data }) => {
-        console.log("🚀 ~ file: WholeArticle.jsx:53 ~ .then ~ data:", data)
         setTrueVotes(data.article.votes);
-
-        setDisplayErr(false);
+        // setDisplayErr(false);
         setIsLoading(false);
         setSingleArticle(data);
       })
