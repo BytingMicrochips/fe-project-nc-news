@@ -44,30 +44,46 @@ const randomArticleId = () => {
 
 
     return (
-    <>
-      <div className="headerWrapper">
-        <header>
-          <h1 id="headingText">NC NEWS</h1>
-        </header>
-        <nav>
-          <button key="home" onClick={() => navigate(`/home`)}>Home</button>
-          <button key="all" onClick={() => navigate(`/articles`)}> All Articles</button>
-          <button key="topics" onClick={() => navigate(`/topics`)}>Topics</button>
-          <button key="random" onClick={() => navigate(`/articles/${randomArticleId()}`)}>Random Article</button>
-          {navButtons.map((option) => {
-            return (
-              <>
-                <button
-                  key={option}
-                  onClick={() => navigate(`/topics/${option.split(" ")[0]}`)}
-                >
-                  {option}
-                </button>
-              </>
-            );
-          })}
-        </nav>
-      </div>
-    </>
-  );
+      <>
+        <div className="headerWrapper">
+          <header>
+            <h1 id="headingText">NC NEWS</h1>
+          </header>
+          <nav>
+           
+              <button key="home" onClick={() => navigate(`/home`)}>
+                Home
+              </button>
+              <button key="all" onClick={() => navigate(`/articles`)}>
+                {" "}
+                All Articles
+              </button>
+              <button key="topics" onClick={() => navigate(`/topics`)}>
+                Topics
+              </button>
+              <button
+                key="random"
+                onClick={() => navigate(`/articles/${randomArticleId()}`)}
+              >
+                Random Article
+              </button>
+              {navButtons.map((option) => {
+                return (
+                  <>
+                    <button
+                      key={option}
+                      onClick={() =>
+                        navigate(`/topics/${option.split(" ")[0]}`)
+                      }
+                    >
+                      {option}
+                    </button>
+                  </>
+                );
+              })}
+           
+          </nav>
+        </div>
+      </>
+    );
 };

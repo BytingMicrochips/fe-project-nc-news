@@ -18,7 +18,7 @@ export const Articles = () => {
   
 const handleUpvote = (e) => {
       const updatedArticles = articles.map((article) => {
-        if (article.article_id === e.currentTarget.value*1) {
+        if (article.article_id === e.currentTarget.value*1){
           article.votes++;
           return article;
         } else {

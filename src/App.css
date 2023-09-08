@@ -540,7 +540,7 @@ height: 3em;
 
 #trash{
     height: 2.6em;
-    margin-left: 2.6em;
+    margin-left: 1.2em;
     margin-top: 0.3em;
     
 }
@@ -554,4 +554,11 @@ height: 3em;
     background-color: rgb(133, 97, 176);
     opacity: 0.6;
     border-radius: 1em;
+}
+
+#commentDeleteButton{
+    background-color: rgb(133, 97, 176);
+    opacity: 0.6;
+    border-radius: 1em;  
+    margin-left: 2em;
 }

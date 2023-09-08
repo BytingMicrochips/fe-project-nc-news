@@ -15,23 +15,25 @@ export const Comments = ({ article_id, user }) => {
 
   const params = useParams();
 
-  const handleDownvote = (e) => {
-  };
+  const handleDownvote = (e) => {};
 
-  const handleUpvote = (e) => {
-  };
+  const handleUpvote = (e) => {};
 
-  const handleDelete = (comment_id) => {
-    setIsDeleted(true)
-    setToDelete(comment_id)
-    if (isDeleted === true) {
-      return(<h1>ITS GONE</h1>)
-    }
-    axios.delete(`https://nc-news-service-h8vo.onrender.com/api/comments/${comment_id}`).then(() => {
-      // setCommentsChanged(true)
-      // setIsDeleted(false)
+  const handleDelete = (e) => {
+    const updateComments = comments.filter((comment) => {
+      if (comment.comment_id !== e.currentTarget.value * 1) {
+        return comment
+      }
     })
-  }
+    setComments(updateComments)
+    axios
+      .delete(
+        `https://nc-news-service-h8vo.onrender.com/api/comments/${e.currentTarget.value}`
+      )
+      .catch(() => {
+        alert("comment delete request failed!");
+      });
+  };
 
   useEffect(() => {
     axios
@@ -42,69 +44,44 @@ export const Comments = ({ article_id, user }) => {
         setComments(data.comments);
         setCommentsChanged(false);
       })
-      .catch((err) => {
-      });
+      .catch((err) => {});
   }, [params.article_id, commentsChanged]);
 
-
-  
   if (comments[0] !== "No comments found...") {
     return comments.map((comment) => {
-      if (comment.author === user) {
-        if (isDeleted === true) {
-  
-}
-return (
-  <>
- 
-    <div className="commentCard">
-      <div id="authorDate">
-        <h4 className="cardChild" id="authorOnly">
-          {comment.author}
-        </h4>
-        <h4 className="cardChild">
-          <em>
-            {comment.created_at.substring(0, 10)}{" "}
-            {comment.created_at.substring(12, 19)}
-          </em>
-        </h4>
-      </div>
-      <article className="cardChild">{comment.body}</article>
-      <div id="voting">
-        <img src={thumbsDown} onClick={handleDownvote} value="down" />
-        <p id="cardChildVotes">{comment.votes}</p>
-        <img src={thumbsUp} onClick={handleUpvote} value="up" />
-        <img id="trash" src={trash} onClick={() => { handleDelete(comment.comment_id) }} />
-      </div>
-    </div>
-  </>
-);
-} else {
-        return (
-          <>
-            <div className="commentCard">
-              <div id="authorDate">
-                <h4 className="cardChild" id="authorOnly">
-                  {comment.author}
-                </h4>
-                <h4 className="cardChild">
-                  <em>
-                    {comment.created_at.substring(0, 10)}{" "}
-                    {comment.created_at.substring(12, 19)}
-                  </em>
-                </h4>
-              </div>
-              <article className="cardChild">{comment.body}</article>
-              <div id="voting">
-                <img src={thumbsDown} onClick={handleDownvote} value="down" />
-                <p id="cardChildVotes">{comment.votes}</p>
-                <img src={thumbsUp} onClick={handleUpvote} value="up" />
-              </div>
+      return (
+        <>
+          <div className="commentCard">
+            <div id="authorDate">
+              <h4 className="cardChild" id="authorOnly">
+                {comment.author}
+              </h4>
+              <h4 className="cardChild">
+                <em>
+                  {comment.created_at.substring(0, 10)}{" "}
+                  {comment.created_at.substring(12, 19)}
+                </em>
+              </h4>
             </div>
-          </>
-        );
-      }
-      });
-    
+            <article className="cardChild">{comment.body}</article>
+            <div id="voting">
+              <img src={thumbsDown} onClick={handleDownvote} value="down" />
+              <p id="cardChildVotes">{comment.votes}</p>
+              <img src={thumbsUp} onClick={handleUpvote} value="up" />
+              {comment.author === user ? (
+                <>
+                  <button id="commentDeleteButton" onClick={handleDelete} key={comment.comment_id} value={comment.comment_id}>
+                    <img id="trash" src={trash} />
+                  </button>
+                </>
+              ) : (
+                <></>
+              )}
+            </div>
+          </div>
+        </>
+      );
+    });
   }
-};
+}
+
