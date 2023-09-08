@@ -49,7 +49,6 @@ export const Homepage = () => {
       });
   }, []);
 
-  console.log(hotArticles);
 
   if (displayErr === true) {
     return (
