@@ -21,7 +21,7 @@ function App() {
   const [commentsChanged, setCommentsChanged] = useState(false);
   return (
     <>
-      <CommentsContext.Provider value={ [commentsChanged, setCommentsChanged] }>
+      <CommentsContext.Provider value={[commentsChanged, setCommentsChanged]}>
         <div className="app">
           <Header />
           <main>
@@ -40,7 +40,7 @@ function App() {
                           </div>
                         </div>
                         <div className="commentWrapper">
-                          <Comments article_id={article_id} />
+                          <Comments article_id={article_id} user={user} />
                         </div>
                       </div>
                     </>

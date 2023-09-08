@@ -7,13 +7,14 @@ import loadingCircle from "../assets/icons8-loading-circle-office-m/icons8-loadi
 import gears from "../assets/gears/gears.svg";
 
 export const SingleTopic = () => {
-    const [allArticles, setAllArticles] = useState([]);
-    const [matchedArticles, setMatchedArticles] = useState([]);
-    const [isLoading, setIsLoading] = useState(true);
-    const [displayErr, setDisplayErr] = useState(false);
-    const [filterBy, setFilterBy] = useState("votes");
-    const [ascDesc, setAscDesc] = useState("asc");
-    const [query, setQuery] = useState("");
+  const [allArticles, setAllArticles] = useState([]);
+  const [matchedArticles, setMatchedArticles] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [displayErr, setDisplayErr] = useState(false);
+  const [filterBy, setFilterBy] = useState("votes");
+  const [ascDesc, setAscDesc] = useState("asc");
+  const [query, setQuery] = useState("");
+
     let [searchParams, setSearchParams] = useSearchParams();
     const params = useParams();
     const navigate = useNavigate();
@@ -65,7 +66,7 @@ if (isLoading === true) {
   );
 }
 
-  if (displayErr === true) {
+if (displayErr === true) {
     return (
       <>
         <div className="wholeArticle">
@@ -92,69 +93,124 @@ if (isLoading === true) {
         </div>
       </>
     );
-  }
+}
+
+const handleUpvote = (e) => {
+  const updatedArticles = matchedArticles.map((article) => {
+    if (article.article_id === e.currentTarget.value * 1) {
+      article.votes++;
+      return article;
+    } else {
+      return article;
+    }
+  });
+  setMatchedArticles(updatedArticles);
+  axios
+    .patch(
+      `https://nc-news-service-h8vo.onrender.com/api/articles/${e.currentTarget.value}`,
+      { inc_votes: 1 }
+    )
+    .catch((err) => {
+      alert("failed to register upvote!");
+    });
+};
+
+const handleDownvote = (e) => {
+  const updatedArticles = matchedArticles.map((article) => {
+    if (article.article_id === e.currentTarget.value * 1) {
+      article.votes--;
+      return article;
+    } else {
+      return article;
+    }
+  });
+  setMatchedArticles(updatedArticles);
+  axios
+    .patch(
+      `https://nc-news-service-h8vo.onrender.com/api/articles/${e.currentTarget.value}`,
+      { inc_votes: -1 }
+    )
+    .catch((err) => {
+      alert("failed to register downvote!");
+    });
+};
+
+if (matchedArticles.length !== 0) {
+    return (
+      <>
+        <div className="allArticlesSub">
+          <h1>Articles about {params.topic}</h1>
+          <h3>Select a sort by option</h3>
+          <div className="queriesSelect">
+            <select className="sortSelect" defaultValue={filterBy}>
+              <option value="votes" onClick={handleFilter}>
+                Votes
+              </option>
+              <option value="created_at" onClick={handleFilter}>
+                Date
+              </option>
+              <option value="comment_count" onClick={handleFilter}>
+                Comment count
+              </option>
+            </select>
+            <select className="ascDescSelect" defaultValue={ascDesc}>
+              <option value="asc" onClick={handleAscDesc}>
+                Ascending
+              </option>
+              <option value="desc" onClick={handleAscDesc}>
+                Descending
+              </option>
+            </select>
+          </div>
+        </div>       
+
+
+
+        {matchedArticles.map((titleCard) => {
   return (
     <>
-      <div className="allArticlesSub">
-        <h1>Articles about {params.topic}</h1>
-        <h3>Select a sort by option</h3>
-        <div className="queriesSelect">
-          <select className="sortSelect" defaultValue={filterBy}>
-            <option value="votes" onClick={handleFilter}>
-              Votes
-            </option>
-            <option value="created_at" onClick={handleFilter}>
-              Date
-            </option>
-            <option value="comment_count" onClick={handleFilter}>
-              Comment count
-            </option>
-          </select>
-          <select className="ascDescSelect" defaultValue={ascDesc}>
-            <option value="asc" onClick={handleAscDesc}>
-              Ascending
-            </option>
-            <option value="desc" onClick={handleAscDesc}>
-              Descending
-            </option>
-          </select>
+      <div className="articleCard" key={titleCard.article_id}>
+        <p className="articleTitle" key={titleCard.title}>
+          {titleCard.title}
+        </p>
+        <div id="rightCardElements">
+          <button
+            id="readNowButton"
+            onClick={() => navigate(`/articles/${titleCard.article_id}`)}
+            key={titleCard.created_at}
+          >
+            Read article
+          </button>
+          <div id="allArtVoting">
+            <button
+              id="hiddenVoteButton"
+              onClick={handleDownvote}
+              value={titleCard.article_id}
+            >
+              <img
+                src={thumbsDown}
+                onClick={() => {
+                  handleDownvote;
+                }}
+              />
+            </button>
+            <p>{titleCard.votes}</p>
+            <button
+              id="hiddenVoteButton"
+              onClick={handleUpvote}
+              value={titleCard.article_id}
+            >
+              <img src={thumbsUp} />
+            </button>
+          </div>
         </div>
       </div>
-      {matchedArticles.map((titleCard) => {
-        return (
-          <>
-            <div className="articleCard" key={titleCard.article_id}>
-              <p className="articleTitle" key={titleCard.title}>
-                {titleCard.title}
-              </p>
-              <div id="rightCardElements">
-                <button
-                  id="readNowButton"
-                  onClick={() => navigate(`/articles/${titleCard.article_id}`)}
-                  key={titleCard.created_at}
-                >
-                  Read article
-                </button>
-                <div id="allArtVoting">
-                  <img
-                    src={thumbsDown}
-                    onClick={() => {
-                      handleDownvote(titleCard.article_id), titleCard.votes - 1;
-                    }}
-                  />
-                  <p>{titleCard.votes}</p>
-                  <img
-                    src={thumbsUp}
-                    onClick={() => {
-                      handleUpvote(titleCard.article_id);
-                    }}
-                  />
-                </div>
-              </div>
-            </div>
-          </>
-        );
-      })}
     </>
   );
+})}
+      </>
+    );
+} else {
+  return(<h1>error image</h1>)
+  }
 };

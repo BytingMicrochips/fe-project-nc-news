@@ -8,41 +8,54 @@ import thumbsDown from "../assets/thumbs-icons/thumb-down.png";
 export const Articles = () => {
   const [articles, setArticles] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [trueVotes, setTrueVotes] = useState(0);
   const [filterBy, setFilterBy] = useState("votes");
   const [ascDesc, setAscDesc] = useState("asc");
   const [query, setQuery] = useState("");
   let [searchParams, setSearchParams] = useSearchParams();
   const navigate = useNavigate();
   
-  const handleUpvote = (id) => {
-    setTrueVotes(trueVotes + 1);
-    axios
-      .patch(`https://nc-news-service-h8vo.onrender.com/api/articles/${id}`, {
-        inc_votes: 1,
+
+  
+const handleUpvote = (e) => {
+      const updatedArticles = articles.map((article) => {
+        if (article.article_id === e.currentTarget.value*1) {
+          article.votes++;
+          return article;
+        } else {
+          return article;
+        }
       })
-      .then(({ data }) => {
-        setTrueVotes(data.votes);
-      })
-      .catch((err) => {
-        alert("failed to register upvote!");
-      });
+      setArticles(updatedArticles);
+      axios
+        .patch(
+          `https://nc-news-service-h8vo.onrender.com/api/articles/${e.currentTarget.value}`,
+          { inc_votes: 1 }
+        )
+        .catch((err) => {
+          alert("failed to register upvote!");
+        });
   };
 
-  const handleDownvote = (id) => {
-    setTrueVotes(trueVotes - 1);
-    axios
-      .patch(`https://nc-news-service-h8vo.onrender.com/api/articles/${id}`, {
-        inc_votes: -1,
-      })
-      .then(({ data }) => {
-        setTrueVotes(data.votes);
-      })
-      .catch((err) => {
-        alert("failed to register downvote!");
+const handleDownvote = (e) => {
+      const updatedArticles = articles.map((article) => {
+        if (article.article_id === e.currentTarget.value * 1) {
+          article.votes--;
+          return article;
+        } else {
+          return article;
+        }
       });
+      setArticles(updatedArticles);
+      axios
+        .patch(
+          `https://nc-news-service-h8vo.onrender.com/api/articles/${e.currentTarget.value}`,
+          { inc_votes: -1 }
+        )
+        .catch((err) => {
+          alert("failed to register downvote!");
+        });
   };
-
+  
   useEffect(() => {
     setQuery(`?sort_by=${filterBy}&&order=${ascDesc}`);
   }, [filterBy, ascDesc]);
@@ -56,7 +69,7 @@ export const Articles = () => {
         setIsLoading(false);
         setArticles(data.articles);
       });
-  }, [trueVotes, query]);
+  }, [query]);
 
 if (isLoading === true) {
     return (
@@ -120,19 +133,26 @@ if (articles.length !== 1) {
                   Read article
                 </button>
                 <div id="allArtVoting">
-                  <img
-                    src={thumbsDown}
-                    onClick={() => {
-                      handleDownvote(titleCard.article_id), titleCard.votes - 1;
-                    }}
-                  />
+                  <button
+                    id="hiddenVoteButton"
+                    onClick={handleDownvote}
+                    value={titleCard.article_id}
+                  >
+                    <img
+                      src={thumbsDown}
+                      onClick={() => {
+                        handleDownvote;
+                      }}
+                    />
+                  </button>
                   <p>{titleCard.votes}</p>
-                  <img
-                    src={thumbsUp}
-                    onClick={() => {
-                      handleUpvote(titleCard.article_id);
-                    }}
-                  />
+                  <button
+                    id="hiddenVoteButton"
+                    onClick={handleUpvote}
+                    value={titleCard.article_id}
+                  >
+                    <img src={thumbsUp} />
+                  </button>
                 </div>
               </div>
             </div>

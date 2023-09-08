@@ -16,7 +16,6 @@ export const NewComment = ({ user }) => {
   const [comment, setComment] = useState("");
   const [commentsChanged, setCommentsChanged] = useContext(CommentsContext);
   
-  console.log("🚀 ~ file: NewComment.jsx:15 ~ NewComment ~ postFailed:", postFailed)
   const params = useParams();
   
   const handleDownvote = (e) => {};
