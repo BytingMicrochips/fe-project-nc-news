@@ -9,6 +9,7 @@ import { NewComment } from './components/NewComment';
 import { Topics } from './components/Topics';
 import { SingleTopic } from './components/SingleTopic';
 import { Homepage } from './components/Homepage';
+import { ErrorPage } from './components/ErrorPage';
 
 
 
@@ -17,6 +18,7 @@ export const CommentsContext = createContext();
 
 function App() {
   const [article_id, setArticle_id] = useState(1);
+  const [mystery, setMystery] = useState("");
   const [user, setUser] = useState("tickle122");
   const [commentsChanged, setCommentsChanged] = useState(false);
   return (
@@ -49,6 +51,7 @@ function App() {
                 />
                 <Route path="/topics" element={<Topics />} />
                 <Route path="/topics/:topic" element={<SingleTopic />} />
+                <Route path="/:mystery" element={<ErrorPage />}/>
               </Routes>
             </div>
           </main>
