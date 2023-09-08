@@ -8,7 +8,7 @@ import { Comments } from './components/Comments';
 import { NewComment } from './components/NewComment';
 import { Topics } from './components/Topics';
 import { SingleTopic } from './components/SingleTopic';
-
+import { Homepage } from './components/Homepage';
 
 
 
@@ -27,6 +27,7 @@ function App() {
           <main>
             <div className="backgroundPseudo">
               <Routes>
+                <Route path="/" element={<Homepage />} />
                 <Route path="/articles" element={<Articles />} />
                 <Route
                   path="/articles/:article_id"

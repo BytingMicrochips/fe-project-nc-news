@@ -51,7 +51,7 @@ const randomArticleId = () => {
           </header>
           <nav>
            
-              <button key="home" onClick={() => navigate(`/home`)}>
+              <button key="home" onClick={() => navigate(`/`)}>
                 Home
               </button>
               <button key="all" onClick={() => navigate(`/articles`)}>

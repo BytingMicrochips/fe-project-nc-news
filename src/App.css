@@ -294,6 +294,7 @@ margin-right: 1em;
 width: 3em;
 height: 3em;
 
+
 }
 
 #articleVoting img:active {
@@ -624,4 +625,55 @@ transition: 0s 0s 1s;
 #commentDeleteButton:active {
     background-color: rgb(156, 36, 27);
     transition: 0s;
+}
+
+#homepageArticle{
+    width: 35em;
+    height: 35em;
+    display: inline-flex;
+}
+
+#recentsWrapper{
+    display: flex;
+    margin:auto; 
+    flex-wrap: wrap;   
+    justify-content: center;
+}
+
+#recentHeading{
+    color: antiquewhite;
+    background-color: rgb(103, 95, 111);
+    padding-top: 0.00002vh;
+    padding-bottom: 0.00002vh;
+    margin-bottom: 1em;
+    opacity: 0.9;
+    border-radius: 1em;
+    width: 60%;
+    height: 1.7em;
+    margin: auto;
+    text-align: center;
+    font-size: 2em;
+}
+
+
+#recentCard{
+position: relative;
+height: 22em;
+margin-bottom: 0em;
+padding-bottom: 0em;
+}
+
+#recentArticleText:hover{
+background-color: rgb(155, 68, 163);
+transition-delay: 0.2s;
+}
+
+#recentArticleText{
+    position: absolute;
+    text-align: center;
+    width: 70%;
+    display: inline;
+    margin-left: 2em;
+    margin-top: 2em;
+    opacity: 0.85;
 }
