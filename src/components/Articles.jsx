@@ -124,7 +124,7 @@ if (articles.length !== 1) {
               <p className="articleTitle" key={titleCard.title}>
                 {titleCard.title}
               </p>
-              <div id="rightCardElements">
+              <div className="rightCardElements">
                 <button
                   id="readNowButton"
                   onClick={() => navigate(`/articles/${titleCard.article_id}`)}
@@ -134,7 +134,6 @@ if (articles.length !== 1) {
                 </button>
                 <div id="allArtVoting">
                   <button
-                    id="hiddenVoteButton"
                     onClick={handleDownvote}
                     value={titleCard.article_id}
                   >
@@ -147,7 +146,6 @@ if (articles.length !== 1) {
                   </button>
                   <p>{titleCard.votes}</p>
                   <button
-                    id="hiddenVoteButton"
                     onClick={handleUpvote}
                     value={titleCard.article_id}
                   >

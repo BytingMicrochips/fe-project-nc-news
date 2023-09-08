@@ -173,7 +173,7 @@ if (matchedArticles.length !== 0) {
         <p className="articleTitle" key={titleCard.title}>
           {titleCard.title}
         </p>
-        <div id="rightCardElements">
+        <div className="rightCardElements">
           <button
             id="readNowButton"
             onClick={() => navigate(`/articles/${titleCard.article_id}`)}

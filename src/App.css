@@ -70,6 +70,13 @@ header, footer{
     
 }
 
+.articleCard:hover{
+    border-style: solid;
+    border-color: rgb(97, 158, 238);
+    border-width: 0.5em;
+    transition-duration: 0.1s
+}
+
 .articleTitle{
     margin-left: 3vw;
     color:antiquewhite
@@ -83,8 +90,20 @@ header, footer{
     border-style: inset;
 }
 
+#readNowButton:hover{
+ background-color: rgb(51, 103, 171);
+transition-duration: 0.4s;
+}
+
+
+
 .backToAll{
     margin-bottom: 2em;
+}
+
+.backToAll:hover{
+    background-color: rgb(147, 90, 200);
+    transition-delay: 0.2s;
 }
 
 
@@ -274,7 +293,15 @@ margin-right: 0.5em;
 margin-right: 1em;
 width: 3em;
 height: 3em;
+
 }
+
+#articleVoting img:active {
+background-color: rgb(155, 68, 163);
+transition: 0s 0s 1s;
+}
+
+
 
 #allArtVoting{
     background-color: rgb(132, 113, 142);
@@ -284,15 +311,13 @@ height: 3em;
     font-weight: 550;
 }
 
-#allArtVoting img, #allArtVoting button{
+#allArtVoting img{
     width: 2em;
     height: 2em;
     margin-top: 0.7em;
 }
 
-
-
-#rightCardElements{
+.rightCardElements{
     display: flex;
     border-radius: 1em;
     border-color: rgb(138, 125, 150);
@@ -321,6 +346,14 @@ height: 3em;
     width:8em;
     position: relative;
     top: 1.2em;
+}
+
+.posted img:hover {
+    background-color: rgb(211, 66, 225);
+    transition-delay: 0.2s;
+}
+.posted img:active {
+    background-color: rgb(97, 158, 238);
 }
 
 .posted img {
@@ -363,7 +396,16 @@ height: 3em;
     display: relative;
     width: 100%;
     height: 100%;
-    
+    border-radius: 1em;
+}
+
+#sendIcon:hover{
+    background-color: rgb(211, 66, 225);
+    transition-delay: 0.2s;
+}
+
+#sendIcon:active {
+    background-color: rgb(97, 158, 238); 
 }
 
 .topicHeadings{
@@ -447,6 +489,12 @@ height: 3em;
     padding: 1em;
     z-index: 3;
     margin-top: -5em;
+}
+
+.headerWrapper button:hover{
+    background-color: rgb(155, 68, 163);
+    transition-delay: 0.1s;
+    transition-duration: 0.2s;
 }
 
 #optimisticComment{
@@ -550,10 +598,15 @@ height: 3em;
     height: 90%;
     margin-top: 0px;
     margin-bottom: 0px;
-    z-index: 1;
     background-color: rgb(133, 97, 176);
     opacity: 0.6;
     border-radius: 1em;
+    transition: 0s 1s;
+}
+
+#allArtVoting button:active{
+    background-color: rgb(156, 27, 156);
+    transition: 0s; 
 }
 
 #commentDeleteButton{
@@ -561,4 +614,14 @@ height: 3em;
     opacity: 0.6;
     border-radius: 1em;  
     margin-left: 2em;
+}
+
+#commentDeleteButton:hover {
+    background-color: rgb(156, 27, 156);
+    transition: 0s;
+}
+
+#commentDeleteButton:active {
+    background-color: rgb(156, 36, 27);
+    transition: 0s;
 }
