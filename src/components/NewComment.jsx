@@ -23,26 +23,27 @@ export const NewComment = ({ user }) => {
   const handleUpvote = (e) => {};
 
   const handleSubmit = () => {
-    setIsPosted(false)
-    setPostFailed(false)
-    axios
-      .post(
-        `https://nc-news-service-h8vo.onrender.com/api/articles/${params.article_id}/comments`,
-        {
-          username: user,
-          body: comment,
-        }
-      )
-      .then(({ data }) => {
-        setCommentsChanged(true)
-        setIsPosted(true)
-
-      })
-      .catch((err) => {
-        setIsPosted(true)
-        setPostFailed(true)
-      });
-  };
+    if (comment !== "") {
+      setIsPosted(false);
+      setPostFailed(false);
+      axios
+        .post(
+          `https://nc-news-service-h8vo.onrender.com/api/articles/${params.article_id}/comments`,
+          {
+            username: user,
+            body: comment,
+          }
+        )
+        .then(({ data }) => {
+          setCommentsChanged(true);
+          setIsPosted(true);
+        })
+        .catch((err) => {
+          setIsPosted(true);
+          setPostFailed(true);
+        });
+    }
+  }
 
 useEffect(() => {
 setIsPosted(false);
