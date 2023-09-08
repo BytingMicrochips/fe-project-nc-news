@@ -463,6 +463,12 @@ transition: 0s 0s 1s;
     opacity: 0.95;
 }
 
+.wholeTopics p:hover{
+    background-color: rgb(155, 68, 163);
+    transition-delay: 0.1s;
+    transition-duration: 0.2s;
+}
+
 .wholeTopics button{
     padding: 1.5em;
     font-size: 1em;
