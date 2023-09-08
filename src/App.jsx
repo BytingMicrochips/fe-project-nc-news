@@ -52,7 +52,13 @@ function App() {
               </Routes>
             </div>
           </main>
-          <footer>Users</footer>
+          <footer>
+            <div id="loggedInWrapper">
+              <div className="loggedInAs">
+                <p>You are logged in as {user}</p>
+              </div>
+            </div>
+          </footer>
         </div>
       </CommentsContext.Provider>
     </>
