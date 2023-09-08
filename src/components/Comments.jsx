@@ -10,7 +10,6 @@ import { CommentsContext } from "../App";
 export const Comments = ({ article_id, user }) => {
   const [comments, setComments] = useState([]);
   const [isDeleted, setIsDeleted] = useState(false);
-  const [toDelete, setToDelete] = useState(false);
   const [commentsChanged, setCommentsChanged] = useContext(CommentsContext);
 
   const params = useParams();
@@ -20,6 +19,7 @@ export const Comments = ({ article_id, user }) => {
   const handleUpvote = (e) => {};
 
   const handleDelete = (e) => {
+    setIsDeleted(false)
     const updateComments = comments.filter((comment) => {
       if (comment.comment_id !== e.currentTarget.value * 1) {
         return comment
@@ -29,7 +29,9 @@ export const Comments = ({ article_id, user }) => {
     axios
       .delete(
         `https://nc-news-service-h8vo.onrender.com/api/comments/${e.currentTarget.value}`
-      )
+    ).then(() => {
+        setIsDeleted(true)
+      })
       .catch(() => {
         alert("comment delete request failed!");
       });
@@ -45,7 +47,26 @@ export const Comments = ({ article_id, user }) => {
         setCommentsChanged(false);
       })
       .catch((err) => {});
-  }, [params.article_id, commentsChanged]);
+  }, [params.article_id, commentsChanged, isDeleted]);
+
+const toggleOffDeleted = () => {
+  setIsDeleted(false)
+}
+
+  if (isDeleted === true) {
+    { setTimeout(() => { toggleOffDeleted()}, 2500)}
+    return (
+      <>
+        <div className="deleteSuccess">
+          <div className="commentCardDelete">
+            <article className="cardChildDelete">
+              Your comment has been deleted
+            </article>
+          </div>
+        </div>
+      </>
+    );
+  }
 
   if (comments[0] !== "No comments found...") {
     return comments.map((comment) => {

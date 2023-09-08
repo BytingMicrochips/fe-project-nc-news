@@ -211,6 +211,33 @@ if (matchedArticles.length !== 0) {
       </Fragment>
     );
 } else {
-  return(<h1>error image</h1>)
+  return (
+    <Fragment key="errMsg">
+      <div className="wholeArticle">
+        <div className="allHeadings">
+          <h2>
+            Sorry! <br />
+            We have no articles on the topic of {params.topic}
+          </h2>
+        </div>
+        <img id="errorGears" src={gears} />
+        <p id="errorMsg">
+          <em>
+            Please ammend your request or use the button below to list all
+            topics
+          </em>
+        </p>
+        <button
+          className="backToAll"
+          onClick={() => navigate("/topics")}
+          key="backToAll"
+        >
+          Back to all topics
+        </button>
+      </div>
+    </Fragment>
+  );
   }
 };
+
+

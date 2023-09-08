@@ -178,7 +178,7 @@ transition-duration: 0.4s;
 #errorGears{
     background-color: rgb(109, 62, 152);
     opacity: 0.6;
-    width: 60%;
+    width: 20%;
     
 }
 
@@ -216,7 +216,6 @@ transition-duration: 0.4s;
     margin-right: 0.5vw;
     padding: 0.3em;
     border-radius: 1em;
-   
 }
 
 #voting{
@@ -623,6 +622,7 @@ transition: 0s 0s 1s;
     opacity: 0.6;
     border-radius: 1em;  
     margin-left: 2em;
+    margin-bottom: 0.4em;
 }
 
 #commentDeleteButton:hover {
@@ -684,4 +684,43 @@ transition-delay: 0.2s;
     margin-left: 2em;
     margin-top: 2em;
     opacity: 0.85;
+}
+
+.deleteSuccess{
+    height: 200px;
+    width: 200px;
+
+}
+
+.commentCardDelete{
+    color: antiquewhite;
+    background-color: rgba(157, 0, 0, 0.923);
+    opacity: 0.85;
+    width: 20vw;
+    height: 8em;
+    text-align: center;
+    border-radius: 1vw;
+    margin-bottom: 2vh;
+    border-color: rgb(138, 125, 150);
+    border-width: 0.4em;
+    border-style:ridge;
+}
+
+.cardChildDelete{
+    font-weight: 450;
+    font-size: 1.5em;
+    line-height: 2em;
+    height: 2em;
+    color: antiquewhite;
+    background-color: rgb(83, 72, 83);
+}
+
+.commentCardDelete p, .commentCardDelete article{
+    position: relative;
+    margin: auto;
+    width:90%;
+    
+    margin-top: 1.5em;
+
+    border-radius: 1em;
 }
