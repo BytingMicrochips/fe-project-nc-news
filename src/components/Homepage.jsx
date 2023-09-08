@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useEffect, useState, Fragment } from "react";
 import { useNavigate } from "react-router-dom";
 import gears from "../assets/gears/gears.svg";
 import loadingCircle from "../assets/icons8-loading-circle-office-m/icons8-loading-circle-80.png";
@@ -52,7 +52,7 @@ export const Homepage = () => {
 
   if (displayErr === true) {
     return (
-      <>
+      <Fragment key="errorMsg">
         <div className="wholeArticle">
           <div className="allHeadings">
             <h2>
@@ -75,30 +75,30 @@ export const Homepage = () => {
             Show all articles
           </button>
         </div>
-      </>
+      </Fragment>
     );
   }
 
   if (isLoading === true) {
     return (
-      <>
+      <Fragment key="loadingCircle">
         <div className="loading">
           <img className="loadingChild" src={loadingCircle} />
         </div>
-      </>
+      </Fragment>
     );
   }
 
   if (recentArticles.length !== 0) {
     return (
-      <>
+      <Fragment key="recentArts">
         <div id="recentHeading">
           <h3>Our most recent articles</h3>
         </div>
         <div id="recentsWrapper">
           {recentArticles.map((article) => {
             return (
-              <>
+              <Fragment key={article.article_id}>
                 <div id="recentCard">
                   <div id="homepageArticle">
                     <div className="wholeArticle">
@@ -126,20 +126,20 @@ export const Homepage = () => {
                     </div>
                   </div>
                 </div>
-              </>
+              </Fragment>
             );
           })}
         </div>
 
         {hotArticles.length !== 0 ? (
-          <>
+          <Fragment key="hotArts">
             <div id="recentHeading">
               <h3>Current hottest articles</h3>
             </div>
             <div id="recentsWrapper">
               {hotArticles.map((article) => {
                 return (
-                  <>
+                  <Fragment key={article.article_id}>
                     <div id="recentCard">
                       <div id="homepageArticle">
                         <div className="wholeArticle">
@@ -167,15 +167,15 @@ export const Homepage = () => {
                         </div>
                       </div>
                     </div>
-                  </>
+                  </Fragment>
                 );
               })}
             </div>
-          </>
+          </Fragment>
         ) : (
-          <></>
+          <Fragment key="noHotArts"></Fragment>
         )}
-      </>
+      </Fragment>
     );
   }
 };

@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useEffect, useState, Fragment } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import loadingCircle from "../assets/icons8-loading-circle-office-m/icons8-loading-circle-80.png";
 import thumbsUp from "../assets/thumbs-icons/thumb-up.png";
@@ -73,11 +73,11 @@ const handleDownvote = (e) => {
 
 if (isLoading === true) {
     return (
-      <>
+      <Fragment key="loadingMsg">
         <div className="loading">
           <img className="loadingChild" src={loadingCircle} />
         </div>
-      </>
+      </Fragment>
     );
 }
 
@@ -91,35 +91,33 @@ const handleAscDesc = (e) => {
   
 if (articles.length !== 1) {   
   return (
-    <>
+    <Fragment key="allArts">
       <div className="allArticlesSub">
         <h1>All available articles</h1>
         <h3>Select a sort by option</h3>
         <div className="queriesSelect">
-          <select className="sortSelect" defaultValue={filterBy}>
-            <option value="votes" onClick={handleFilter}>
-              Votes
-            </option>
-            <option value="created_at" onClick={handleFilter}>
-              Date
-            </option>
-            <option value="comment_count" onClick={handleFilter}>
-              Comment count
-            </option>
+          <select
+            className="sortSelect"
+            defaultValue={filterBy}
+            onChange={handleFilter}
+          >
+            <option value="votes">Votes</option>
+            <option value="created_at">Date</option>
+            <option value="comment_count">Comment count</option>
           </select>
-          <select className="ascDescSelect" defaultValue={ascDesc}>
-            <option value="asc" onClick={handleAscDesc}>
-              Ascending
-            </option>
-            <option value="desc" onClick={handleAscDesc}>
-              Descending
-            </option>
+          <select
+            className="ascDescSelect"
+            defaultValue={ascDesc}
+            onChange={handleAscDesc}
+          >
+            <option value="asc">Ascending</option>
+            <option value="desc">Descending</option>
           </select>
         </div>
       </div>
       {articles.map((titleCard) => {
         return (
-          <>
+          <Fragment key={titleCard.article_id}>
             <div className="articleCard" key={titleCard.article_id}>
               <p className="articleTitle" key={titleCard.title}>
                 {titleCard.title}
@@ -133,10 +131,7 @@ if (articles.length !== 1) {
                   Read article
                 </button>
                 <div id="allArtVoting">
-                  <button
-                    onClick={handleDownvote}
-                    value={titleCard.article_id}
-                  >
+                  <button onClick={handleDownvote} value={titleCard.article_id}>
                     <img
                       src={thumbsDown}
                       onClick={() => {
@@ -145,19 +140,16 @@ if (articles.length !== 1) {
                     />
                   </button>
                   <p>{titleCard.votes}</p>
-                  <button
-                    onClick={handleUpvote}
-                    value={titleCard.article_id}
-                  >
+                  <button onClick={handleUpvote} value={titleCard.article_id}>
                     <img src={thumbsUp} />
                   </button>
                 </div>
               </div>
             </div>
-          </>
+          </Fragment>
         );
       })}
-    </>
+    </Fragment>
   );
 }
 };

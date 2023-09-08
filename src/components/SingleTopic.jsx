@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useEffect, useState, Fragment } from "react";
 import { useParams, useNavigate, useSearchParams } from "react-router-dom";
 import thumbsUp from "../assets/thumbs-icons/thumb-up.png";
 import thumbsDown from "../assets/thumbs-icons/thumb-down.png";
@@ -58,17 +58,17 @@ const handleAscDesc = (e) => {
   
 if (isLoading === true) {
   return (
-    <>
+    <Fragment key="loading">
       <div className="loading">
         <img className="loadingChild" src={loadingCircle} />
       </div>
-    </>
+    </Fragment>
   );
 }
 
 if (displayErr === true) {
     return (
-      <>
+      <Fragment key="errMsg">
         <div className="wholeArticle">
           <div className="allHeadings">
             <h2>
@@ -91,7 +91,7 @@ if (displayErr === true) {
             Back to all articles
           </button>
         </div>
-      </>
+      </Fragment>
     );
 }
 
@@ -137,7 +137,7 @@ const handleDownvote = (e) => {
 
 if (matchedArticles.length !== 0) {
     return (
-      <>
+      <Fragment key="matchedArts">
         <div className="allArticlesSub">
           <h1>Articles about {params.topic}</h1>
           <h3>Select a sort by option</h3>
@@ -162,53 +162,53 @@ if (matchedArticles.length !== 0) {
               </option>
             </select>
           </div>
-        </div>       
-
-
+        </div>
 
         {matchedArticles.map((titleCard) => {
-  return (
-    <>
-      <div className="articleCard" key={titleCard.article_id}>
-        <p className="articleTitle" key={titleCard.title}>
-          {titleCard.title}
-        </p>
-        <div className="rightCardElements">
-          <button
-            id="readNowButton"
-            onClick={() => navigate(`/articles/${titleCard.article_id}`)}
-            key={titleCard.created_at}
-          >
-            Read article
-          </button>
-          <div id="allArtVoting">
-            <button
-              id="hiddenVoteButton"
-              onClick={handleDownvote}
-              value={titleCard.article_id}
-            >
-              <img
-                src={thumbsDown}
-                onClick={() => {
-                  handleDownvote;
-                }}
-              />
-            </button>
-            <p>{titleCard.votes}</p>
-            <button
-              id="hiddenVoteButton"
-              onClick={handleUpvote}
-              value={titleCard.article_id}
-            >
-              <img src={thumbsUp} />
-            </button>
-          </div>
-        </div>
-      </div>
-    </>
-  );
-})}
-      </>
+          return (
+            <Fragment key={titleCard.article_id}>
+              <div className="articleCard" key={titleCard.article_id}>
+                <p className="articleTitle" key={titleCard.title}>
+                  {titleCard.title}
+                </p>
+                <div className="rightCardElements">
+                  <button
+                    id="readNowButton"
+                    onClick={() =>
+                      navigate(`/articles/${titleCard.article_id}`)
+                    }
+                    key={titleCard.created_at}
+                  >
+                    Read article
+                  </button>
+                  <div id="allArtVoting">
+                    <button
+                      id="hiddenVoteButton"
+                      onClick={handleDownvote}
+                      value={titleCard.article_id}
+                    >
+                      <img
+                        src={thumbsDown}
+                        onClick={() => {
+                          handleDownvote;
+                        }}
+                      />
+                    </button>
+                    <p>{titleCard.votes}</p>
+                    <button
+                      id="hiddenVoteButton"
+                      onClick={handleUpvote}
+                      value={titleCard.article_id}
+                    >
+                      <img src={thumbsUp} />
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </Fragment>
+          );
+        })}
+      </Fragment>
     );
 } else {
   return(<h1>error image</h1>)

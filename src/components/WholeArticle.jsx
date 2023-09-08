@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useEffect, useState, Fragment } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import gears from "../assets/gears/gears.svg";
 import loadingCircle from "../assets/icons8-loading-circle-office-m/icons8-loading-circle-80.png";
@@ -63,46 +63,46 @@ export const WholeArticle = ({ article_id }) => {
       
   if (isLoading === true) {
     return (
-      <>
+      <Fragment key="loadingArt">
         <div className="loading">
           <img className="loadingChild" src={loadingCircle} />
         </div>
-      </>
+      </Fragment>
     );
   }
 
   if (displayErr === true) {
            return (
-             <>
-                 <div className="wholeArticle">
-                   <div className="allHeadings">
-                     <h2>
-                       Sorry! <br />
-                       We couldn't find that article
-                     </h2>
-                   </div>
-                   <img id="errorGears" src={gears} />
-                   <p id="errorMsg">
-                     <em>
-                       Please ammend your request or use the button below to
-                       list all articles
-                     </em>
-                   </p>
-                   <button
-                     className="backToAll"
-                     onClick={() => navigate("/articles")}
-                     key="backToAll"
-                   >
-                     Back to all articles
-                   </button>
+             <Fragment key="errMsgWholeArt">
+               <div className="wholeArticle">
+                 <div className="allHeadings">
+                   <h2>
+                     Sorry! <br />
+                     We couldn't find that article
+                   </h2>
                  </div>
-             </>
+                 <img id="errorGears" src={gears} />
+                 <p id="errorMsg">
+                   <em>
+                     Please ammend your request or use the button below to list
+                     all articles
+                   </em>
+                 </p>
+                 <button
+                   className="backToAll"
+                   onClick={() => navigate("/articles")}
+                   key="backToAll"
+                 >
+                   Back to all articles
+                 </button>
+               </div>
+             </Fragment>
            ); 
   }
   
   if (singleArticle.article) {
       return (
-        <>
+        <Fragment key="singleArtFrag">
           <div className="wholeArticle">
             <div className="allHeadings">
               <h2>{singleArticle.article.title}</h2>
@@ -130,7 +130,7 @@ export const WholeArticle = ({ article_id }) => {
               Back to all articles
             </button>
           </div>
-        </>
+        </Fragment>
       );
     } 
 }

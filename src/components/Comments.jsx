@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useParams } from "react-router-dom";
-import { useEffect, useState, useContext } from "react";
+import { useEffect, useState, useContext, Fragment } from "react";
 import thumbsUp from "../assets/thumbs-icons/thumb-up.png";
 import thumbsDown from "../assets/thumbs-icons/thumb-down.png";
 import trash from "../assets/trash.png";
@@ -50,7 +50,7 @@ export const Comments = ({ article_id, user }) => {
   if (comments[0] !== "No comments found...") {
     return comments.map((comment) => {
       return (
-        <>
+        <Fragment key={comment.comment_id}>
           <div className="commentCard">
             <div id="authorDate">
               <h4 className="cardChild" id="authorOnly">
@@ -70,7 +70,12 @@ export const Comments = ({ article_id, user }) => {
               <img src={thumbsUp} onClick={handleUpvote} value="up" />
               {comment.author === user ? (
                 <>
-                  <button id="commentDeleteButton" onClick={handleDelete} key={comment.comment_id} value={comment.comment_id}>
+                  <button
+                    id="commentDeleteButton"
+                    onClick={handleDelete}
+                    key={comment.comment_id}
+                    value={comment.comment_id}
+                  >
                     <img id="trash" src={trash} />
                   </button>
                 </>
@@ -79,7 +84,7 @@ export const Comments = ({ article_id, user }) => {
               )}
             </div>
           </div>
-        </>
+        </Fragment>
       );
     });
   }

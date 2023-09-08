@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { firstLetterUppercase } from "../utils/firstLetterUppercase";
-import { useEffect, useState } from "react";
+import { useEffect, useState, Fragment } from "react";
 import loadingCircle from "../assets/icons8-loading-circle-office-m/icons8-loading-circle-80.png";
 import gears from "../assets/gears/gears.svg";
 
@@ -35,17 +35,17 @@ export const Topics = () => {
 
   if (isLoading === true) {
     return (
-      <>
+      <Fragment key="loadingFrag">
         <div className="loading">
           <img className="loadingChild" src={loadingCircle} />
         </div>
-      </>
+      </Fragment>
     );
   }
 
   if (displayErr === true) {
     return (
-      <>
+      <Fragment key="errMsg">
         <div className="wholeArticle">
           <div className="allHeadings">
             <h2>
@@ -68,19 +68,23 @@ export const Topics = () => {
             Back to all articles
           </button>
         </div>
-      </>
+      </Fragment>
     );
 }
     
   return (
-    <>
+    <Fragment key="allTops">
       <div className="allTopics">
         <div className="wholeTopics">
           <div className="topicHeadings">
             <h2>Find the News you care about!</h2>
           </div>
           {capitalisedTopics.map((topic) => {
-            return <p key={topic} onClick={()=> navigate(`/topics/${topic}`)}>{topic}</p>;
+            return (
+              <p key={topic} onClick={() => navigate(`/topics/${topic}`)}>
+                {topic}
+              </p>
+            );
           })}
           <button
             className="backToAll"
@@ -91,6 +95,6 @@ export const Topics = () => {
           </button>
         </div>
       </div>
-    </>
+    </Fragment>
   );
 };

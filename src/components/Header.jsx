@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { firstLetterUppercase } from "../utils/firstLetterUppercase";
-import { useEffect, useState } from "react";
+import { useEffect, useState, Fragment } from "react";
 
 export const Header = () => {
     const [topics, setTopics] = useState([]);
@@ -45,7 +45,7 @@ const randomArticleId = () => {
 
     return (
       <>
-        <div className="headerWrapper">
+        <div className="headerWrapper" >
           <header>
             <h1 id="headingText">NC NEWS</h1>
           </header>
@@ -69,7 +69,7 @@ const randomArticleId = () => {
               </button>
               {navButtons.map((option) => {
                 return (
-                  <>
+                  <Fragment key={option}>
                     <button
                       key={option}
                       onClick={() =>
@@ -78,7 +78,7 @@ const randomArticleId = () => {
                     >
                       {option}
                     </button>
-                  </>
+                  </Fragment>
                 );
               })}
            
