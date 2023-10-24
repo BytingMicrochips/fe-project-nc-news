@@ -68,7 +68,7 @@ export const Homepage = () => {
             </em>
           </p>
           <button
-            className="backToAll"
+            id="backToAll"
             onClick={() => navigate("/articles")}
             key="backToAll"
           >
@@ -101,7 +101,7 @@ export const Homepage = () => {
               <Fragment key={article.article_id}>
                 <div id="recentCard">
                   <div id="homepageArticle">
-                    <div className="wholeArticle">
+                    <div className="homepageTile">
                       <div
                         className="allHeadings"
                         id="recentArticleText"
@@ -109,15 +109,28 @@ export const Homepage = () => {
                           navigate(`/articles/${article.article_id}`)
                         }
                       >
-                        <h2>{article.title}</h2>
-                        <div className="articleSubheading">
-                          <h3 className="subheadingAuthor">
-                            <em>{article.author}</em>
-                          </h3>
-                          <h3 className="subheadingDate">
-                            <em>{article.created_at.substring(0, 10)}</em>
-                          </h3>
-                        </div>
+                        {window.innerWidth < 810 ? (
+                          <>
+                            <div className="homepageTextMobile">
+                              <h2>{article.title}</h2>
+                              <em>
+                                <h2>{article.created_at.substring(0, 10)}</h2>
+                              </em>
+                            </div>
+                          </>
+                        ) : (
+                          <>
+                            <h2>{article.title}</h2>
+                            <div className="articleSubheading">
+                              <h3 className="subheadingAuthor">
+                                <em>{article.author}</em>
+                              </h3>
+                              <h3 className="subheadingDate">
+                                <em>{article.created_at.substring(0, 10)}</em>
+                              </h3>
+                            </div>
+                          </>
+                        )}
                       </div>
                       <img
                         id="recentArticleImg"
@@ -142,7 +155,7 @@ export const Homepage = () => {
                   <Fragment key={article.article_id}>
                     <div id="recentCard">
                       <div id="homepageArticle">
-                        <div className="wholeArticle">
+                        <div className="homepageTile">
                           <div
                             className="allHeadings"
                             id="recentArticleText"
@@ -150,15 +163,30 @@ export const Homepage = () => {
                               navigate(`/articles/${article.article_id}`)
                             }
                           >
-                            <h2>{article.title}</h2>
-                            <div className="articleSubheading">
-                              <h3 className="subheadingAuthor">
-                                <em>{article.author}</em>
-                              </h3>
-                              <h3 className="subheadingDate">
-                                <em>{article.created_at.substring(0, 10)}</em>
-                              </h3>
-                            </div>
+                            {window.innerWidth < 810 ? (
+                              <>
+                                <div className="homepageTextMobile">
+                                  <h2>{article.title}</h2>
+                                  <em>
+                                    <h2>{article.votes} upvotes</h2>
+                                  </em>
+                                </div>
+                              </>
+                            ) : (
+                              <>
+                                <h2>{article.title}</h2>
+                                <div className="articleSubheading">
+                                  <h3 className="subheadingAuthor">
+                                    <em>{article.author}</em>
+                                  </h3>
+                                  <h3 className="subheadingDate">
+                                    <em>
+                                      {article.created_at.substring(0, 10)}
+                                    </em>
+                                  </h3>
+                                </div>
+                              </>
+                            )}
                           </div>
                           <img
                             id="recentArticleImg"

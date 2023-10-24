@@ -61,7 +61,7 @@ export const Topics = () => {
             </em>
           </p>
           <button
-            className="backToAll"
+            id="backToAll"
             onClick={() => navigate("/articles")}
             key="backToAll"
           >
@@ -87,7 +87,7 @@ export const Topics = () => {
             );
           })}
           <button
-            className="backToAll"
+            id="backToAll"
             onClick={() => navigate("/articles")}
             key="backToAll"
           >

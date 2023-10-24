@@ -50,7 +50,7 @@ main{
     padding-bottom: 0.5em;
     border-radius: 1em;
 }
-header, footer{
+header{
     max-width: 90%;
     height: 15vh;
     margin: auto;
@@ -58,8 +58,16 @@ header, footer{
     border-radius: 2vh;
 }
 
+footer {
+    max-width: 90%;
+    height: 100%;
+    margin: auto;
+    background-color: rgb(109, 62, 152);
+    border-radius: 2vh;
+}
+
 .articleCard{
-    max-width: 70%;
+    max-width: 80%;
     margin: auto;
     display: flex;
     margin-bottom: 2vh;
@@ -82,7 +90,7 @@ header, footer{
     color:antiquewhite
 }
 
-#readNowButton, .backToAll{
+#readNowButton, #backToAll{
     background-color: rgb(109, 62, 152);
     color: antiquewhite;
     min-width: 15%;
@@ -97,23 +105,22 @@ transition-duration: 0.4s;
 
 
 
-.backToAll{
+#backToAll{
     margin-bottom: 2em;
 }
 
-.backToAll:hover{
+#backToAll:hover, #backToAll :{
     background-color: rgb(147, 90, 200);
     transition-delay: 0.2s;
 }
 
 
-.wholeArticle{
-    display: block;
+.wholeArticle, .homepageTile{
+    display: inline-block;
     text-align: center;
     margin: auto;
     background-color: rgb(159, 123, 204);
     width: 90%;
-    margin-top: 1em;
     border-radius: 1em;
     border-color: rgb(138, 125, 150);
     border-width: 0.4em;
@@ -121,7 +128,7 @@ transition-duration: 0.4s;
     opacity: 0.95;
 }
 
-.wholeArticle img{
+.wholeArticle img, .homepageTile img{
     width: 95%;
     border-radius: 1em;
 }
@@ -197,6 +204,17 @@ transition-duration: 0.4s;
     border-style:ridge;
 }
 
+.commentCardRed {
+    color: antiquewhite;
+    background-color: rgba(157, 0, 0, 0.923);
+    width: 20vw;
+    border-radius: 1vw;
+    margin-bottom: 2vh;
+    border-color: rgb(138, 125, 150);
+    border-width: 0.4em;
+    border-style: ridge;
+}
+
 .commentWrapper{
     width: fit-content;
     margin-right: 1em;
@@ -210,7 +228,7 @@ transition-duration: 0.4s;
     width: fit-content;
     justify-content: center ;
 }
-.commentCard p, .commentCard article{
+.commentCard p, .commentCard article, .commentCardRed article{
     margin-top: 0.5vh;
     margin-left: 0.5vw;
     margin-right: 0.5vw;
@@ -221,9 +239,7 @@ transition-duration: 0.4s;
 #voting{
     display: flex;
     width: fit-content;
-    margin-right: 0px;
-    margin-top: 0.5em;
-    margin-left: 0.6em;
+    margin: auto;
 }
 
 #voting img, #voting p{
@@ -258,6 +274,8 @@ transition-duration: 0.4s;
 #cardChildVotes{
     font-weight: 400;
     font-size: large;
+    margin-top: 1em;
+    text-align: center;
 }
 
 #articleVoting{
@@ -348,6 +366,7 @@ transition: 0s 0s 1s;
     top: 1.2em;
 }
 
+
 .posted img:hover {
     background-color: rgb(211, 66, 225);
     transition-delay: 0.2s;
@@ -356,7 +375,7 @@ transition: 0s 0s 1s;
     background-color: rgb(97, 158, 238);
 }
 
-.posted img {
+.posted img, .postedInactive img {
     width: 8em;
     margin-top: 1.5em;
     background-color: aqua;
@@ -367,6 +386,14 @@ transition: 0s 0s 1s;
     background-color: rgb(133, 97, 176);
 }
 
+.posted p, .postedInactive p{
+        color: antiquewhite;
+        background-color: rgb(155, 117, 193);
+        padding: 0.4em;
+        border-radius: 1em;
+        margin-top: 0.2em;
+        text-align: center;
+}
 .newCommentWrapper textarea{
     width: 85%;
     height: 50%;
@@ -385,7 +412,7 @@ transition: 0s 0s 1s;
 
 .newCommentWrapper button{
     height: 50%;
-    margin-top: 3em;
+    margin-top: 1.8em;
     margin-right: 2.5em;
     border-radius: 1em;
     background-color: rgb(128, 102, 160);
@@ -485,6 +512,13 @@ transition: 0s 0s 1s;
     margin-bottom: 1em;
 }
 
+.navButtons{
+    width: 2em;
+    height: 2em;
+    display: inline-flex;
+    justify-content: flex-end;
+}
+
 .headerWrapper button{
     margin-left: 2em;
     margin-right: 1em;
@@ -530,8 +564,8 @@ transition: 0s 0s 1s;
     width: fit-content;
     background-color: rgb(103, 95, 111);
     padding: 1em;
-    padding-left: 4em;
-    padding-right: 4em;
+    padding-left: 3.8em;
+    padding-right: 3.8em;
     margin: auto;
     margin-bottom: 1em;
     margin-top: 0.5em;
@@ -550,6 +584,11 @@ transition: 0s 0s 1s;
     border-style: inset;
 }
 
+.queriesWrapper{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
 
 .commentCardFailed {
     color: antiquewhite;
@@ -596,7 +635,6 @@ transition: 0s 0s 1s;
 
 #trash{
     height: 2.6em;
-    margin-left: 1.2em;
     margin-top: 0.3em;
     
 }
@@ -617,11 +655,15 @@ transition: 0s 0s 1s;
     transition: 0s; 
 }
 
+#deleteButtonWrapper{
+    display: flex;
+    justify-content: center;
+}
+
 #commentDeleteButton{
     background-color: rgb(133, 97, 176);
     opacity: 0.6;
     border-radius: 1em;  
-    margin-left: 2em;
     margin-bottom: 0.4em;
 }
 
@@ -637,7 +679,7 @@ transition: 0s 0s 1s;
 
 #homepageArticle{
     width: 35em;
-    height: 35em;
+    height: 100%;
     display: inline-flex;
 }
 
@@ -646,6 +688,7 @@ transition: 0s 0s 1s;
     margin:auto; 
     flex-wrap: wrap;   
     justify-content: center;
+    margin-bottom: 1em;
 }
 
 #recentHeading{
@@ -689,7 +732,6 @@ transition-delay: 0.2s;
 .deleteSuccess{
     height: 200px;
     width: 200px;
-
 }
 
 .commentCardDelete{
@@ -697,10 +739,9 @@ transition-delay: 0.2s;
     background-color: rgba(157, 0, 0, 0.923);
     opacity: 0.85;
     width: 20vw;
-    height: 8em;
+    height: fit-content;
     text-align: center;
     border-radius: 1vw;
-    margin-bottom: 2vh;
     border-color: rgb(138, 125, 150);
     border-width: 0.4em;
     border-style:ridge;
@@ -710,19 +751,25 @@ transition-delay: 0.2s;
     font-weight: 450;
     font-size: 1.5em;
     line-height: 2em;
-    height: 2em;
+    height: fit-content;
     color: antiquewhite;
     background-color: rgb(83, 72, 83);
+    display: flex;
+        justify-items: center;
 }
 
 .commentCardDelete p, .commentCardDelete article{
-    position: relative;
     margin: auto;
     width:90%;
-    margin-top: 1.5em;
     border-radius: 1em;
+    margin-top: 0.25em;
+    margin-bottom: 0.25em;
 }
 
+#deleteConfirm{
+    font-size: larger;
+    font-weight: 500;
+}
 .loggedInAs{
     display: flex;
     justify-content: center;
@@ -735,11 +782,365 @@ transition-delay: 0.2s;
     margin-left: 2em;
     border-radius: 1em;
     border-style: inset;
+    margin-bottom: 1em;
 }
 
 #loggedInWrapper{
     margin-top: 1em;
+    margin-bottom: 1em;
     padding-top: 1em;
     display: flex;
     justify-content: center;
+}
+
+.newCommentElements{
+    display: flex;
+    justify-items: center;
+}
+
+@media only screen and (max-width: 1910px) {
+
+header{
+    display: block;
+    margin: 0px;
+    margin-top: 1em;
+    padding: 0em;
+    max-height: 70px;
+    width: 100%;
+    background-color: transparent;
+}
+header h1{
+    display: flex;
+    font-size: 80%;
+    justify-content: flex-start;
+    flex-direction: column;
+    flex-grow: 2;
+    height: fit-content;
+    margin-bottom: 0em;
+    padding-bottom: 0.2em;
+    width: 100%;
+}
+
+
+.headerWrapper{
+    height: 70px;
+    border-radius: 1em;
+    background-color: rgb(109, 62, 152);
+}
+.contentWrapper{
+    display: block;
+    width: 100%;
+}
+#headingText h1{
+    width: 100%;
+}
+#root{
+    width: 100%;
+    margin-left: 0em;
+    margin-right: 0em;
+    padding-left: 0em;
+    padding-right: 0em;
+}
+.app{
+    width: 100%;
+    margin: auto;
+}
+main{
+    width: 100%;
+    max-width: 100%;
+    padding: 0em;
+    margin-left: 0em;
+    margin-right: 0em;
+    margin-top: 110px;
+}
+.wholeArticleWrapper{
+    padding: 0%;
+    margin: 0em;
+    display: block;
+}
+.wholeArticle{
+    width: 94%;
+    padding: 0em;
+    margin-left: 0.2em;
+    margin-top: 0px;
+}
+#wholeArticleBod{
+    width: auto;
+}
+
+.articleSubheading{
+    display: block;
+    margin: auto;
+    width: fit-content;
+    padding: 0%;
+    margin: auto;
+}
+#backToAll{
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    width: 50%;
+    margin-bottom: 1em;
+    margin-top: 1em;
+    background-color: rgb(109, 62, 152);
+    color: antiquewhite;
+    min-width: 15%;
+    border-radius: 1em;
+    border-style: inset;
+}
+
+nav{
+    width: 100%;
+    background-color: rgb(109, 62, 152);
+    margin-top: 0em;
+    border-radius: 1em;
+    display: block;    
+    height: 110px;
+}
+.navButtons {
+    width: fit-content;
+    display: inline-block;
+    padding-left: 0.1em;
+    padding-right: 0.1em;
+    margin: auto;
+    margin-top: 1em;
+}
+
+.navButtons button{
+    width: fit-content;
+    margin-bottom: 1.25em;
+    margin-left: 1%;
+    margin-right: 1%;
+    padding-left: 2%;
+    padding-right: 2%;
+    display: inline;
+   
+}
+
+.newCommentWrapper{
+    width: 94%;
+    margin: auto;
+    margin-top: 1.2em;
+    height: fit-content;
+}
+
+.newCommentElements{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-bottom: 20px;
+}
+.newCommentWrapper button{
+    margin: auto;
+    width: 70px;
+}
+
+.newCommentWrapper textarea{
+        line-height: 1em;
+}
+ .commentCardDelete, .deleteSuccess{
+    width: fit-content;
+    border-radius: 1em;
+    height: fit-content;
+    margin: auto;
+    padding: 0%;
+}
+.commentCardRed{
+    width: 90%;
+    margin: auto;
+    margin-bottom: 0.5em;
+}
+
+.commentWrapper{
+    margin: auto;
+    margin-top: 1em;
+}
+
+.postedInactive{
+    display: flex;
+    justify-content: center;
+}
+
+.postedInactive p{
+    margin-top: 0.5em;
+    margin-left: 0.5em;
+}
+
+
+#postedFeedback img{
+    width: 50px ;
+    margin-top: 0.25em;
+    margin-bottom: 0.25em;
+}
+.posted{
+    height: fit-content;
+    width: fit-content;
+    margin: auto;
+    display: flex;
+}
+
+.posted p{
+    margin-left: 0.5em;
+    color: antiquewhite;
+    background-color: rgb(155, 117, 193);
+    padding: 0.4em;
+    border-radius: 1em;
+}
+#postedFeedback{
+    display: block;
+}
+#articleVoting{
+    max-width: fit-content;
+    margin: auto;
+    margin-bottom: 1em;
+    padding: 0%;
+}
+
+#commentDeleteButton img{
+width: 30px;
+margin: auto;
+padding: 0.5em;
+}
+
+#commentDeleteButton{
+    width: fit-content;
+    padding: 0%;
+    margin: auto;
+    display: flex;
+    margin-bottom: 0.5em;
+}
+
+.commentCard{
+    width: 90%;
+    margin: auto;
+    margin-bottom: 1em;
+}
+#footer{
+    height: fit-content;
+    width: 100%;
+}
+
+.loggedInWrapper{
+    width: fit-content;
+    text-align: center;
+    padding: 0%;
+    margin: auto;
+    margin-bottom: 0.5em;
+}
+
+.loggedInAs{
+    width: fit-content;
+    text-align: center;
+    padding: 0.25em;
+    margin: auto;
+    margin-left: 0.5em;
+    margin-right: 0.5em;
+    margin-bottom: 0.5em;
+}
+.allArticlesSub{
+    width: 50%;
+    margin: auto;
+}
+
+.allTopics{
+    width: fit-content;
+    margin: auto;
+}
+
+.wholeTopics{
+    width: 93%;
+    margin-top: 0px;
+}
+
+.wholeTopics p{
+    padding: 0.2em;
+    margin: auto;
+    margin-bottom: 0.5em;
+}
+.articleCard{
+    display: block;
+    width: 80%;
+    padding: 0.1em 0.5em 0.1em 0.5em;
+    text-align: center;
+    
+}
+.rightCardElements{
+    margin: auto;
+    margin-bottom: 0.5em;
+    width: fit-content;
+}
+#allArtVoting{
+    margin-left: 0.5em;
+    padding: 0.25em;
+    width: fit-content;
+}
+#readNowButton{
+    display: inline;
+    padding: 1em;
+    padding-right: 1em;
+
+}
+
+.queriesSelect{
+    display: inline;
+    margin: auto;
+}
+
+.sortSelect{
+    margin-bottom: 0.5em;
+}
+
+#recentHeading{
+    display: block;
+    height: fit-content;
+    width: 94%;
+    padding: 0.1em;
+    padding-top:3%;
+    padding-bottom: 3%;
+    margin-bottom: 0.5em;
+    margin-top: 0.5em;
+    background-color: rgb(92, 66, 118);
+}
+
+#recentHeading h3{
+    margin-bottom: 0.25em;
+    margin-top: 0.25em;
+    font-size: 0.65em;
+}
+
+.homepageTile{
+width: 50%;
+display: flex;
+flex-direction: column;
+justify-content: center;
+}
+
+#recentArticleText{
+    margin: 0.5em;
+    padding: 1%;
+    display: flex;
+    justify-content: center;
+    width: 45%;
+}
+
+#recentArticleText h2{
+    width: 95%;
+    font-size: medium;
+}
+.homepageTile img{
+width: auto;
+}
+
+#homepageArticle{
+height: fit-content;
+}
+
+#recentCard {
+height: fit-content;
+margin-top: 0.5em;
+}
+
+.commentWrapper{
+    display: block;
+}
 }

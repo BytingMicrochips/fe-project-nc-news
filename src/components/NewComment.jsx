@@ -52,15 +52,15 @@ setIsPosted(false);
 const handleAnotherComment = () => {
   setIsPosted(false)
   setPostFailed(false);
-
-  }
+}
 
   if (isPosted === true) {
     return (
       <>
         <div id="postedFeedback">
-          <div className="posted">
+          <div className="postedInactive">
             <img className="postedChild" src={sent} />
+            <p>Comment posted</p>
           </div>
           <div id="optimisticComment">
             <div className="commentCard">
@@ -83,6 +83,7 @@ const handleAnotherComment = () => {
               src={newComment}
               onClick={handleAnotherComment}
             />
+            <p>Comment again</p>
           </div>
         </div>
       </>
@@ -90,7 +91,6 @@ const handleAnotherComment = () => {
   }
 
   if (postFailed === true) {
-    console.log('inside red land')
     return (
       <>
         <div id="postedFeedback">
@@ -126,22 +126,24 @@ const handleAnotherComment = () => {
 
   return (
     <>
-      <textarea
-        id="inputComment"
-        name="Text1"
-        cols="40"
-        rows="3"
-        placeholder="Write a new comment here..."
-        onChange={(e) => setComment(e.target.value)}
-      ></textarea>
-      <button
-        htmlFor="inputComment"
-        onClick={() => {
-          handleSubmit();
-        }}
-      >
-        <img id="sendIcon" src={send} alt="submit comment now" />
-      </button>
+      <div className="newCommentElements">
+        <textarea
+          id="inputComment"
+          name="Text1"
+          cols="40"
+          rows="3"
+          placeholder="Write a new comment here..."
+          onChange={(e) => setComment(e.target.value)}
+        ></textarea>
+        <button
+          htmlFor="inputComment"
+          onClick={() => {
+            handleSubmit();
+          }}
+        >
+          <img id="sendIcon" src={send} alt="submit comment now" />
+        </button>
+      </div>
     </>
   );
 };

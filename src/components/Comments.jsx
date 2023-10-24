@@ -6,10 +6,10 @@ import thumbsDown from "../assets/thumbs-icons/thumb-down.png";
 import trash from "../assets/trash.png";
 import { CommentsContext } from "../App";
 
-
 export const Comments = ({ article_id, user }) => {
   const [comments, setComments] = useState([]);
   const [isDeleted, setIsDeleted] = useState(false);
+  const [lastDeleted, setLastDeleted] = useState({})
   const [commentsChanged, setCommentsChanged] = useContext(CommentsContext);
 
   const params = useParams();
@@ -18,24 +18,27 @@ export const Comments = ({ article_id, user }) => {
 
   const handleUpvote = (e) => {};
 
+
   const handleDelete = (e) => {
     setIsDeleted(false)
     const updateComments = comments.filter((comment) => {
       if (comment.comment_id !== e.currentTarget.value * 1) {
         return comment
+      } else {
+        setLastDeleted(comment)
       }
     })
     setComments(updateComments)
     axios
-      .delete(
-        `https://nc-news-service-h8vo.onrender.com/api/comments/${e.currentTarget.value}`
-    ).then(() => {
+    .delete(
+      `https://nc-news-service-h8vo.onrender.com/api/comments/${e.currentTarget.value}`
+      ).then(() => {
         setIsDeleted(true)
       })
       .catch(() => {
         alert("comment delete request failed!");
       });
-  };
+    };
 
   useEffect(() => {
     axios
@@ -54,19 +57,32 @@ const toggleOffDeleted = () => {
 }
 
   if (isDeleted === true) {
-    { setTimeout(() => { toggleOffDeleted()}, 2500)}
+    { setTimeout(() => { toggleOffDeleted() }, 2500) }
     return (
       <>
-        <div className="deleteSuccess">
-          <div className="commentCardDelete">
-            <article className="cardChildDelete">
-              Your comment has been deleted
-            </article>
+        <div className="commentCardRed">
+          <article id="deleteConfirm">Successfully deleted your comment :</article>
+          <div id="authorDate">
+            <h4 className="cardChild" id="authorOnly">
+              {lastDeleted.author}
+            </h4>
+            <h4 className="cardChild">
+              <em>
+                {lastDeleted.created_at.substring(0, 10)}{" "}
+                {lastDeleted.created_at.substring(12, 19)}
+              </em>
+            </h4>
+          </div>
+          <article className="cardChild">{lastDeleted.body}</article>
+          <div id="voting">
+            <img src={thumbsDown} onClick={handleDownvote} value="down" />
+            <p id="cardChildVotes">{lastDeleted.votes}</p>
+            <img src={thumbsUp} onClick={handleUpvote} value="up" />
           </div>
         </div>
       </>
-    );
-  }
+    );}
+             
 
   if (comments[0] !== "No comments found...") {
     return comments.map((comment) => {
@@ -89,8 +105,10 @@ const toggleOffDeleted = () => {
               <img src={thumbsDown} onClick={handleDownvote} value="down" />
               <p id="cardChildVotes">{comment.votes}</p>
               <img src={thumbsUp} onClick={handleUpvote} value="up" />
-              {comment.author === user ? (
-                <>
+            </div>
+            {comment.author === user ? (
+              <>
+                <div id="deleteButtonWrapper">
                   <button
                     id="commentDeleteButton"
                     onClick={handleDelete}
@@ -99,11 +117,11 @@ const toggleOffDeleted = () => {
                   >
                     <img id="trash" src={trash} />
                   </button>
-                </>
-              ) : (
-                <></>
-              )}
-            </div>
+                </div>
+              </>
+            ) : (
+              <></>
+            )}
           </div>
         </Fragment>
       );

@@ -89,7 +89,7 @@ export const WholeArticle = ({ article_id }) => {
                    </em>
                  </p>
                  <button
-                   className="backToAll"
+                   id="backToAll"
                    onClick={() => navigate("/articles")}
                    key="backToAll"
                  >
@@ -116,14 +116,14 @@ export const WholeArticle = ({ article_id }) => {
               </div>
             </div>
             <img src={singleArticle.article.article_img_url} />
-            <p>{singleArticle.article.body}</p>
+            <p id="wholeArticleBod">{singleArticle.article.body}</p>
             <div id="articleVoting">
               <img src={thumbsDown} onClick={handleDownvote} />
               <p id="articleVotes">{trueVotes}</p>
               <img src={thumbsUp} onClick={handleUpvote} />
             </div>
             <button
-              className="backToAll"
+              id="backToAll"
               onClick={() => navigate("/articles")}
               key="backToAll"
             >
