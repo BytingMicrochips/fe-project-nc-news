@@ -127,7 +127,9 @@ transition-duration: 0.4s;
     border-style:outset;
     opacity: 0.95;
 }
-
+.wholeArticle{
+    margin-left: 2.5em;
+}
 .wholeArticle img, .homepageTile img{
     width: 95%;
     border-radius: 1em;
@@ -217,8 +219,6 @@ transition-duration: 0.4s;
 
 .commentWrapper{
     width: fit-content;
-    margin-right: 1em;
-    margin-top: 1em;
     opacity: 0.96;
     z-index: 1;
 }
@@ -240,11 +240,22 @@ transition-duration: 0.4s;
     display: flex;
     width: fit-content;
     margin: auto;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
 }
 
-#voting img, #voting p{
+#voting img{
     margin-right: 1em;
     width: 3em
+}
+
+#voting p {
+    padding-left: 0.8em;
+    padding-right: 0.8em;
+    height: 100%;
+    margin: auto;
+    margin-left: 0.3em;
+    margin-right: 0.3em;
 }
 
 #authorDate{
@@ -274,7 +285,6 @@ transition-duration: 0.4s;
 #cardChildVotes{
     font-weight: 400;
     font-size: large;
-    margin-top: 1em;
     text-align: center;
 }
 
@@ -367,11 +377,11 @@ transition: 0s 0s 1s;
 }
 
 
-.posted img:hover {
+.posted img:hover, #commentVoteButton:hover, #userCommentVoteButton:hover{
     background-color: rgb(211, 66, 225);
     transition-delay: 0.2s;
 }
-.posted img:active {
+.posted img:active, #commentVoteButton:active{
     background-color: rgb(97, 158, 238);
 }
 
@@ -659,20 +669,30 @@ transition: 0s 0s 1s;
     display: flex;
     justify-content: center;
 }
+#commentVoteButton, #userCommentVoteButton {
+    background-color: transparent;
+    border-color: transparent;
+    border-radius: 1em;
+}
 
-#commentDeleteButton{
+#commentVoteButton img, #userCommentVoteButton img{
+    margin: auto;
+}
+
+#commentDeleteButton, #votingButtonWrapper{
     background-color: rgb(133, 97, 176);
     opacity: 0.6;
     border-radius: 1em;  
-    margin-bottom: 0.4em;
+    height: fit-content;
 }
+
 
 #commentDeleteButton:hover {
     background-color: rgb(156, 27, 156);
     transition: 0s;
 }
 
-#commentDeleteButton:active {
+#commentDeleteButton:active, #userCommentVoteButton:active {
     background-color: rgb(156, 36, 27);
     transition: 0s;
 }
