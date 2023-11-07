@@ -594,6 +594,29 @@ transition: 0s 0s 1s;
     border-style: inset;
 }
 
+.loggedInAs select{
+    background-color: rgb(109, 62, 152);
+    border-radius: 1em;
+    color: antiquewhite;
+    font-size: 1em;
+    border-color: rgb(138, 125, 150);
+    border-width: 0.2em;
+    border-style: inset;
+    margin-left: 0.3em;
+    display: flex;
+}
+
+.loggedInAs img{
+    width: 3em;
+    height: 3em;
+    border-radius: 1em;
+    margin-left: 0.3em;
+    padding: 0.1em;
+    border-color: rgb(138, 125, 150);
+    border-width: 0.2em;
+    border-style: inset;
+}
+
 .queriesWrapper{
     width: 100%;
     display: flex;
@@ -795,15 +818,15 @@ transition-delay: 0.2s;
     display: flex;
     justify-content: center;
     font-size: 1.5em;
-    height: fit-content;
-    width:20%;
+    width:fit-content;
     padding: 1em;
     background-color: rgb(128, 102, 160);
     color: antiquewhite;
-    margin-left: 2em;
     border-radius: 1em;
     border-style: inset;
-    margin-bottom: 1em;
+    margin-left: 0.3em;
+    margin-right: 0.3em;
+    margin-bottom: 0.7em;
 }
 
 #loggedInWrapper{
@@ -1041,22 +1064,29 @@ padding: 0.5em;
     width: 100%;
 }
 
-.loggedInWrapper{
-    width: fit-content;
+#loggedInWrapper{
+    width: 100%;
     text-align: center;
     padding: 0%;
+    margin: auto;
+    margin-bottom: 0.2em;
+    display: block;
+}
+
+.loggedInAs{
+    width: 92%;
+    text-align: center;
+    padding: 0.25em;
     margin: auto;
     margin-bottom: 0.5em;
 }
 
-.loggedInAs{
-    width: fit-content;
-    text-align: center;
-    padding: 0.25em;
-    margin: auto;
-    margin-left: 0.5em;
-    margin-right: 0.5em;
-    margin-bottom: 0.5em;
+.loggedInAs p{
+    padding-left: 0.1em;
+}
+
+.loggedInAs select{
+    margin-left: 0.1em;
 }
 .allArticlesSub{
     width: 50%;
@@ -1107,7 +1137,7 @@ padding: 0.5em;
     margin: auto;
 }
 
-.sortSelect{
+.sortSelect {
     margin-bottom: 0.5em;
 }
 
@@ -1162,6 +1192,19 @@ margin-top: 0.5em;
 }
 
 .commentWrapper{
+    display: inline;
+}
+
+#authorDate{
+    display: flex;
+    justify-content: space-between;
+    margin-right: 0.4em;
+    margin-left: 0.4em;
+    font-size: smaller;
+}
+
+#authorDate em{
     display: block;
+    text-align: right;
 }
 }

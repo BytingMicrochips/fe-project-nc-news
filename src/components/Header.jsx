@@ -35,7 +35,6 @@ const randomArticleId = () => {
     return newArticleId
 }
 
-console.log(navButtons)
 
     return (
       <>
