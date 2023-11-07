@@ -366,7 +366,6 @@ transition: 0s 0s 1s;
     border-width: 0.4em;
     border-style: ridge;
     border-radius: 1em;
-    opacity: 0.85;
     
 }
 
@@ -415,7 +414,7 @@ transition: 0s 0s 1s;
     font-size: 20px;
     line-height: 2em;
     resize: none;
-    background-color: rgb(128, 102, 160);
+    background-color: rgb(109, 62, 152);
     border-radius: 1em;
     padding-left: 0.8em;
     color: antiquewhite;
