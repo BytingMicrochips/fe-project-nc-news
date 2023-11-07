@@ -5,28 +5,21 @@ import { useEffect, useState, Fragment } from "react";
 
 
 export const Header = () => {
-    const [topics, setTopics] = useState([]);
-    const [capitalisedTopics, setCapitalisedTopics] = useState([]);
     const [navButtons, setNavButtons] = useState([]);
     const [numArticles, setNumArticles] = useState([]);
     const [articleId, setArticleId] = useState([]);
     const navigate = useNavigate(); 
     
     useEffect(() => {
-        axios
-        .get(`https://nc-news-service-h8vo.onrender.com/api/topics`)
-        .then(({ data }) => {
-            const slugs = data.map((topic) => topic.slug);
-            setTopics(slugs);
-        })
-        .catch((err) => {});
-    }, []);
-    
-    useEffect(() => {
-        setCapitalisedTopics(firstLetterUppercase(topics))
-        const navOptions = [ ...capitalisedTopics] 
-        setNavButtons(navOptions)
-    }, [topics])
+      axios
+      .get(`https://nc-news-service-h8vo.onrender.com/api/topics`)
+      .then(({ data }) => {
+        const slugs = data.map((topic) => topic.slug);
+        const capitalised = firstLetterUppercase(slugs);
+        setNavButtons(capitalised);
+      })
+      .catch((err) => {});
+    }, []);    
     
     useEffect(() => {
         axios
@@ -42,7 +35,7 @@ const randomArticleId = () => {
     return newArticleId
 }
 
-
+console.log(navButtons)
 
     return (
       <>

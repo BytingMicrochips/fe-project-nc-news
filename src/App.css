@@ -668,6 +668,7 @@ transition: 0s 0s 1s;
 #deleteButtonWrapper{
     display: flex;
     justify-content: center;
+    margin-bottom: 0.5em;
 }
 #commentVoteButton, #userCommentVoteButton {
     background-color: transparent;
