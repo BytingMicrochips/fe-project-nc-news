@@ -14,10 +14,44 @@ export const Comments = ({ article_id, user }) => {
 
   const params = useParams();
 
-  const handleDownvote = (e) => {};
+  const handleDownvote = (e) => {
+    const downvoteOptimistic = comments.map((eachComment) => {
+      if (eachComment.comment_id === e.currentTarget.value * 1) {
+        eachComment.votes--
+        return eachComment;
+      } else {
+        return eachComment
+      }
+    })
+    setComments(downvoteOptimistic);
+    axios
+      .patch(
+        `https://nc-news-service-h8vo.onrender.com/api/comments/${e.currentTarget.value}`,
+        { inc_votes: -1 }
+      )
+      .then(() => {
+      })
+      .catch((err) => {});
+  };
 
-  const handleUpvote = (e) => {};
-
+  const handleUpvote = (e) => {
+    const upvoteOptimistic = comments.map((eachComment) => {
+      if (eachComment.comment_id === e.currentTarget.value * 1) {
+        eachComment.votes++;
+        return eachComment;
+      } else {
+        return eachComment;
+      }
+    });
+    setComments(upvoteOptimistic);
+    axios
+      .patch(
+        `https://nc-news-service-h8vo.onrender.com/api/comments/${e.currentTarget.value}`,
+        { inc_votes: 1 }
+      )
+      .then(() => {})
+      .catch((err) => {});
+  };
 
   const handleDelete = (e) => {
     setIsDeleted(false)
@@ -101,11 +135,59 @@ const toggleOffDeleted = () => {
               </h4>
             </div>
             <article className="cardChild">{comment.body}</article>
-            <div id="voting">
-              <img src={thumbsDown} onClick={handleDownvote} value="down" />
-              <p id="cardChildVotes">{comment.votes}</p>
-              <img src={thumbsUp} onClick={handleUpvote} value="up" />
-            </div>
+
+            {user !== comment.author ? (
+              <>
+                <div id="voting">
+                  <div id="votingButtonWrapper">
+                    <button
+                      id="commentVoteButton"
+                      onClick={handleDownvote}
+                      key={comment.comment_id}
+                      value={comment.comment_id}
+                    >
+                      <img src={thumbsDown} value="down" />
+                    </button>
+                  </div>
+                  <p id="cardChildVotes">{comment.votes}</p>
+                  <div id="votingButtonWrapper">
+                    <button
+                      id="commentVoteButton"
+                      onClick={handleUpvote}
+                      key={comment.comment_id}
+                      value={comment.comment_id}
+                    >
+                      <img src={thumbsUp} value="up" />
+                    </button>
+                  </div>
+                </div>
+              </>
+            ) : (
+              <>
+                <div id="voting">
+                  <div id="votingButtonWrapper">
+                    <button
+                      id="userCommentVoteButton"
+                      key={comment.comment_id}
+                      value={comment.comment_id}
+                    >
+                      <img src={thumbsDown} value="down" />
+                    </button>
+                  </div>
+                  <p id="cardChildVotes">{comment.votes}</p>
+                  <div id="votingButtonWrapper">
+                    <button
+                      id="userCommentVoteButton"
+                      key={comment.comment_id}
+                      value={comment.comment_id}
+                    >
+                      <img src={thumbsUp} value="up" />
+                    </button>
+                  </div>
+                </div>
+              </>
+            )}
+
             {comment.author === user ? (
               <>
                 <div id="deleteButtonWrapper">
